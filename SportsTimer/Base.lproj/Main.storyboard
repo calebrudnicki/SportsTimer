@@ -35,7 +35,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="Start Game"/>
                                         <connections>
-                                            <segue destination="dVr-oR-T6M" kind="show" id="PdV-n9-u3e"/>
+                                            <action selector="startGame:" destination="OKf-6u-B9X" eventType="touchUpInside" id="Agp-Nu-kxp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -66,12 +66,58 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deviceSelector" destination="KAW-U5-RGj" id="SCU-og-GUc"/>
                         <outlet property="view" destination="n9z-N7-qyU" id="OeP-Sm-L6P"/>
+                        <segue destination="1Jk-Jm-xvm" kind="show" identifier="startOfGameScoreboardSegue" id="l9Y-H7-Jqw"/>
+                        <segue destination="dVr-oR-T6M" kind="show" identifier="startOfGameSwipeSegue" id="acl-1b-mUB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9e-rB-V0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157" y="571"/>
+        </scene>
+        <!--Scoreboard View Controller-->
+        <scene sceneID="ChR-gw-KIB">
+            <objects>
+                <viewController id="1Jk-Jm-xvm" customClass="ScoreboardViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahI-7z-BEV"/>
+                        <viewControllerLayoutGuide type="bottom" id="IJg-fn-8bx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XMY-gn-H0f">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scoreboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-bn-hDm">
+                                <rect key="frame" x="223.5" y="281.5" width="153.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yE-Qi-hBZ">
+                                <rect key="frame" x="547" y="28" width="33" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="S7t-AT-xkl" kind="unwind" unwindAction="close:" id="73h-f2-WS4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27418608579999998" green="0.50196081400000003" blue="0.32794947130000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hf8-bn-hDm" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="40Q-jZ-bGt"/>
+                            <constraint firstAttribute="trailing" secondItem="5yE-Qi-hBZ" secondAttribute="trailing" constant="20" id="Ch0-Bo-XJW"/>
+                            <constraint firstItem="5yE-Qi-hBZ" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" constant="8" id="FL6-3U-KZv"/>
+                            <constraint firstItem="hf8-bn-hDm" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="pHU-ZL-eeL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRr-zq-zVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="S7t-AT-xkl" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="1419"/>
         </scene>
         <!--Swipe View Controller-->
         <scene sceneID="2ok-LK-9YZ">
@@ -188,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="880" y="571"/>
         </scene>
-        <!--Item-->
+        <!--Final View Controller-->
         <scene sceneID="5ho-sN-lUp">
             <objects>
                 <viewController id="NPJ-fa-w10" customClass="FinalViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,14 +275,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-Jc-nIN">
-                                <rect key="frame" x="538" y="28" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-Jc-nIN">
+                                <rect key="frame" x="539" y="28" width="33" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gu8-Vu-cww" kind="unwind" unwindAction="close:" id="VyY-mH-r4d"/>
+                                    <segue destination="gu8-Vu-cww" kind="unwind" unwindAction="close:" id="xXf-85-dQj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -248,7 +294,6 @@
                             <constraint firstItem="7UB-Ps-Dde" firstAttribute="centerX" secondItem="7aS-0j-ucm" secondAttribute="centerX" id="pj9-Db-LIj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="5iB-i3-Du8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="introLabel" destination="Hsc-pj-agX" id="5Nj-al-jiO"/>

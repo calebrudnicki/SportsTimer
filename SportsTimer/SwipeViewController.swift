@@ -122,6 +122,7 @@ class SwipeViewController: UIViewController {
     
     //This function creates a segue to the FinalViewController to display final game stats and info
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("PREAPRETONG")
         let finalViewController = segue.destinationViewController as! FinalViewController
         finalViewController.introText = finalIntro
         finalViewController.winnerText = finalWinner

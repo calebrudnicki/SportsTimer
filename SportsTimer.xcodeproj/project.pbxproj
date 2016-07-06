@@ -22,6 +22,7 @@
 		8221920C1D1C2AA600309328 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8221920B1D1C2AA600309328 /* GlanceController.swift */; };
 		8221920E1D1C2AA600309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8221920D1D1C2AA600309328 /* Assets.xcassets */; };
 		827204AC1D1C718100AAD265 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827204AB1D1C718100AAD265 /* SwipeViewController.swift */; };
+		829260AE1D2C49D800AA20D8 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829260AD1D2C49D800AA20D8 /* FinalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		8221920D1D1C2AA600309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8221920F1D1C2AA600309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827204AB1D1C718100AAD265 /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		829260AD1D2C49D800AA20D8 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				822191E01D1C2AA500309328 /* AppDelegate.swift */,
-				822191E21D1C2AA500309328 /* ViewController.swift */,
 				822191E41D1C2AA500309328 /* Main.storyboard */,
+				822191E21D1C2AA500309328 /* ViewController.swift */,
 				827204AB1D1C718100AAD265 /* SwipeViewController.swift */,
+				829260AD1D2C49D800AA20D8 /* FinalViewController.swift */,
 				822191E71D1C2AA500309328 /* Assets.xcassets */,
 				822191E91D1C2AA500309328 /* LaunchScreen.storyboard */,
 				822191EC1D1C2AA500309328 /* Info.plist */,
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822191E31D1C2AA500309328 /* ViewController.swift in Sources */,
+				829260AE1D2C49D800AA20D8 /* FinalViewController.swift in Sources */,
 				822191E11D1C2AA500309328 /* AppDelegate.swift in Sources */,
 				827204AC1D1C718100AAD265 /* SwipeViewController.swift in Sources */,
 			);

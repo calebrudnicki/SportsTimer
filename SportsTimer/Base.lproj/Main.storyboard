@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="kKY-OI-MPH">
             <objects>
-                <viewController id="OKf-6u-B9X" sceneMemberID="viewController">
+                <viewController id="OKf-6u-B9X" customClass="ViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eTP-nq-NMX"/>
                         <viewControllerLayoutGuide type="bottom" id="fdb-Nd-P7M"/>
@@ -35,7 +35,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="Start Game"/>
                                         <connections>
-                                            <segue destination="dVr-oR-T6M" kind="show" id="ZBT-PA-Sxo"/>
+                                            <segue destination="dVr-oR-T6M" kind="show" id="PdV-n9-u3e"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -65,6 +65,9 @@
                             <constraint firstAttribute="trailing" secondItem="6AN-1T-ZNW" secondAttribute="trailing" constant="20" id="veF-yp-NfX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="view" destination="n9z-N7-qyU" id="OeP-Sm-L6P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9e-rB-V0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,11 +181,86 @@
                         <outlet property="player1Score" destination="vvv-91-rwG" id="JAw-F2-U3y"/>
                         <outlet property="player2Score" destination="iE0-Sv-tzk" id="zmd-cL-NEt"/>
                         <outlet property="timerLabel" destination="ytS-ne-bmo" id="MlY-LU-dWt"/>
+                        <segue destination="NPJ-fa-w10" kind="show" identifier="endOfGameSegue" id="gb4-gH-8iO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0t-UD-00T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880" y="571"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="5ho-sN-lUp">
+            <objects>
+                <viewController id="NPJ-fa-w10" customClass="FinalViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AhR-vg-wkd"/>
+                        <viewControllerLayoutGuide type="bottom" id="YI1-p6-R0o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7aS-0j-ucm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="7UB-Ps-Dde">
+                                <rect key="frame" x="222" y="115" width="156" height="369"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congrats to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsc-pj-agX">
+                                        <rect key="frame" x="0.0" y="0.0" width="156" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-my-F9q">
+                                        <rect key="frame" x="31" y="111" width="95" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You won" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgu-IW-f2V">
+                                        <rect key="frame" x="21" y="222" width="114" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufN-Zh-nQ5">
+                                        <rect key="frame" x="40" y="333" width="77" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-Jc-nIN">
+                                <rect key="frame" x="538" y="28" width="34" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gu8-Vu-cww" kind="unwind" unwindAction="close:" id="VyY-mH-r4d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27418608579999998" green="0.50196081400000003" blue="0.32794947130000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gnG-Jc-nIN" firstAttribute="top" secondItem="AhR-vg-wkd" secondAttribute="bottom" constant="8" id="49m-rR-uoh"/>
+                            <constraint firstItem="7UB-Ps-Dde" firstAttribute="centerY" secondItem="7aS-0j-ucm" secondAttribute="centerY" id="Cbs-65-WXR"/>
+                            <constraint firstAttribute="trailing" secondItem="gnG-Jc-nIN" secondAttribute="trailing" constant="28" id="ET8-6H-LWk"/>
+                            <constraint firstItem="7UB-Ps-Dde" firstAttribute="centerX" secondItem="7aS-0j-ucm" secondAttribute="centerX" id="pj9-Db-LIj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="5iB-i3-Du8"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="introLabel" destination="Hsc-pj-agX" id="5Nj-al-jiO"/>
+                        <outlet property="resultLabel" destination="pgu-IW-f2V" id="cDZ-Bz-eOv"/>
+                        <outlet property="scoreLabel" destination="ufN-Zh-nQ5" id="q1o-Te-kyb"/>
+                        <outlet property="winnerLabel" destination="o3d-my-F9q" id="4Tl-7j-219"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="drA-0T-kIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gu8-Vu-cww" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1605" y="571"/>
         </scene>
     </scenes>
 </document>

@@ -9,17 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+//MARK: viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
+    
+//MARK: didReceieveMemoryWarning()
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-
+    
+//MARK: Action Functions
+    
+    //This function takes in all buttons connected to the Exit part of their view and allows them to return to this view controller when they are pressed
+    @IBAction func close(segue: UIStoryboardSegue) {
+        
+    }
+    
 }
-

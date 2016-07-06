@@ -23,9 +23,13 @@ class SwipeViewController: UIViewController {
     let leftSwipe = UISwipeGestureRecognizer()
     let rightSwipe = UISwipeGestureRecognizer()
     var timer: NSTimer = NSTimer()
-    var count = 20
+    var count = 5
     var score1 = 0
     var score2 = 0
+    var finalIntro = "Congrats to"
+    var finalWinner = ""
+    var finalResult = "You won"
+    var finalScore = ""
     
     
 //MARK: viewDidLoad()
@@ -49,19 +53,18 @@ class SwipeViewController: UIViewController {
     
 //MARK: Starting a New Game
     
-    //This function starts a new game by starting the timer and calling iniating the swipe functionality
+    //This function kicks off the timer and initiates the swipe functionality
     func newGame() {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(SwipeViewController.updateTimer), userInfo: nil, repeats: true)
-        initiateOrEndSwipes()
+        activateSwipes()
     }
     
     
 //MARK: Timer Functions
     
-    //This function updates the timerLabel so it always shows the correct time and checks to see if the times has run out
+    //This function updates the timerLabel so it always shows the correct time and also checks to see if the times has run out
     func updateTimer() {
         count -= 1
-        print(count)
         if count == -1 {
             timer.invalidate()
             timesUp()
@@ -71,30 +74,36 @@ class SwipeViewController: UIViewController {
         
     }
     
-    //This function runs when the timer runs out. It disables the swipe functionality, plays a notification sound and displays the winner and loser to the user
+    //This function that runs when the timer runs out plays a notification sound and sets all necessary game info to variables before calling the segue to the FinalViewController
     func timesUp() {
-        initiateOrEndSwipes()
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if score1 > score2 {
-            player1Score.text = "W"
-            player1Score.textColor = UIColor.greenColor()
-            player2Score.text = "L"
-            player2Score.textColor = UIColor.redColor()
+            finalWinner = "Player 1"
+            finalScore = "\(score1) - \(score2)"
         } else if score2 > score1 {
-            player2Score.text = "W"
-            player2Score.textColor = UIColor.greenColor()
-            player1Score.text = "L"
-            player1Score.textColor = UIColor.redColor()
+            finalWinner = "Player 2"
+            finalScore = "\(score2) - \(score1)"
         } else {
-            player1Score.text = "T"
-            player1Score.textColor = UIColor.blueColor()
-            player2Score.text = "T"
-            player2Score.textColor = UIColor.blueColor()
+            finalIntro = "Good job to"
+            finalWinner = "Both sides"
+            finalResult = "You tied"
+            finalScore = "\(score1) - \(score2)"
         }
+        self.performSegueWithIdentifier("endOfGameSegue", sender: self)
     }
    
     
 //MARK: Swipe Functions
+    
+    //This function creates the swipe functionalty
+    func activateSwipes() {
+        leftSwipe.addTarget(self, action: #selector(SwipeViewController.handleSwipes(_:)))
+        rightSwipe.addTarget(self, action: #selector(SwipeViewController.handleSwipes(_:)))
+        self.view.addGestureRecognizer(leftSwipe)
+        self.view.addGestureRecognizer(rightSwipe)
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+    }
     
     //This function handles each swipe and tells the program what to do after each swipe
     func handleSwipes(sender: UISwipeGestureRecognizer) {
@@ -108,18 +117,16 @@ class SwipeViewController: UIViewController {
         }
     }
     
-    //This function creates the swipe functionalty, yet if the timer is over, it will disable the swipe functionality
-    func initiateOrEndSwipes() {
-        leftSwipe.addTarget(self, action: #selector(SwipeViewController.handleSwipes(_:)))
-        rightSwipe.addTarget(self, action: #selector(SwipeViewController.handleSwipes(_:)))
-        self.view.addGestureRecognizer(leftSwipe)
-        self.view.addGestureRecognizer(rightSwipe)
-        leftSwipe.direction = .Left
-        rightSwipe.direction = .Right
-        if count < 0 {
-            leftSwipe.enabled = false
-            rightSwipe.enabled = false
-        }
+    
+//MARK: Segues
+    
+    //This function creates a segue to the FinalViewController to display final game stats and info
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let finalViewController = segue.destinationViewController as! FinalViewController
+        finalViewController.introText = finalIntro
+        finalViewController.winnerText = finalWinner
+        finalViewController.resultText = finalResult
+        finalViewController.scoreText = finalScore
     }
     
 }

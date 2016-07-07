@@ -23,7 +23,8 @@ class SwipeViewController: UIViewController {
     let leftSwipe = UISwipeGestureRecognizer()
     let rightSwipe = UISwipeGestureRecognizer()
     var timer: NSTimer = NSTimer()
-    var count = 5
+    var isPaused = false
+    var count = 10
     var score1 = 0
     var score2 = 0
     var finalIntro = "Congrats to"
@@ -62,16 +63,17 @@ class SwipeViewController: UIViewController {
     
 //MARK: Timer Functions
     
-    //This function updates the timerLabel so it always shows the correct time and also checks to see if the times has run out
+    //This function updates the timerLabel as long as the timer is not paused so it always shows the correct time and also checks to see if the times has run out
     func updateTimer() {
-        count -= 1
-        if count == -1 {
-            timer.invalidate()
-            timesUp()
-        } else {
-            timerLabel.text = String(count)
+        if isPaused == false {
+            count -= 1
+            if count == -1 {
+                timer.invalidate()
+                timesUp()
+            } else {
+                timerLabel.text = String(count)
+            }
         }
-        
     }
     
     //This function that runs when the timer runs out plays a notification sound and sets all necessary game info to variables before calling the segue to the FinalViewController
@@ -118,12 +120,30 @@ class SwipeViewController: UIViewController {
     }
     
     
+//MARK: Action / Alerts Functions
+    
+    //This function acts as both a pause button and a double check to see if the user really wants to delete the current game once the Exit button is tapped. Once this button is tapped, it pauses the clock 
+    @IBAction func exitOrPauseButtonTapped(sender: AnyObject) {
+        isPaused = true
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to end the game?", preferredStyle: .ActionSheet)
+        let yesAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            self.performSegueWithIdentifier("exitSegue", sender: self)
+        }
+        let noAction = UIAlertAction(title: "No, Resume Playing", style: .Default) { (handler) in
+            self.isPaused = false
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
 //MARK: Segues
     
     //This function holds the info needed when a segue is called from the SwipeViewController. It checks to see which segue is called (either the regular one or the unwind segue) and does the appropriate actions to make it work
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            if identifier != "Exit" {
+            if identifier != "exitSegue" {
                 let finalViewController = segue.destinationViewController as! FinalViewController
                 finalViewController.introText = finalIntro
                 finalViewController.winnerText = finalWinner

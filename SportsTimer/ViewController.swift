@@ -47,8 +47,8 @@ class ViewController: UIViewController {
         }
     }
 
+    //This function can be connected to a button to unwind a segue
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
-        
     }
     
 }

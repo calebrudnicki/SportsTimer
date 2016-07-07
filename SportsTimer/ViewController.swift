@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
 
     
-//MARK: Action Functions
+//MARK: Action / Segue Functions
     
     //This function takes in all buttons connected to the Exit part of their view and allows them to return to this view controller when they are pressed
     @IBAction func close(segue: UIStoryboardSegue) {
@@ -47,4 +47,8 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
 }

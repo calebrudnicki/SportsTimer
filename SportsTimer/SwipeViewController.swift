@@ -120,13 +120,17 @@ class SwipeViewController: UIViewController {
     
 //MARK: Segues
     
-    //This function creates a segue to the FinalViewController to display final game stats and info
+    //This function holds the info needed when a segue is called from the SwipeViewController. It checks to see which segue is called (either the regular one or the unwind segue) and does the appropriate actions to make it work
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let finalViewController = segue.destinationViewController as! FinalViewController
-        finalViewController.introText = finalIntro
-        finalViewController.winnerText = finalWinner
-        finalViewController.resultText = finalResult
-        finalViewController.scoreText = finalScore
+        if let identifier = segue.identifier {
+            if identifier != "Exit" {
+                let finalViewController = segue.destinationViewController as! FinalViewController
+                finalViewController.introText = finalIntro
+                finalViewController.winnerText = finalWinner
+                finalViewController.resultText = finalResult
+                finalViewController.scoreText = finalScore
+            }
+        }
     }
     
 }

@@ -95,7 +95,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="z6A-ZK-nYo">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="z6A-ZK-nYo">
                                         <rect key="frame" x="2" y="144" width="104" height="106"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Player 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL8-ZT-5dJ">
@@ -132,7 +132,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yE-Qi-hBZ">
-                                <rect key="frame" x="547" y="28" width="33" height="36"/>
+                                <rect key="frame" x="20" y="20" width="33" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,11 +145,12 @@
                         <color key="backgroundColor" red="0.27418608579999998" green="0.50196081400000003" blue="0.32794947130000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="GmC-AK-Rr2" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="7Mh-ZS-x0Q"/>
-                            <constraint firstAttribute="trailing" secondItem="5yE-Qi-hBZ" secondAttribute="trailing" constant="20" id="Ch0-Bo-XJW"/>
-                            <constraint firstItem="5yE-Qi-hBZ" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" constant="8" id="FL6-3U-KZv"/>
+                            <constraint firstItem="5yE-Qi-hBZ" firstAttribute="leading" secondItem="XMY-gn-H0f" secondAttribute="leading" constant="20" id="FvG-7S-OJ4"/>
+                            <constraint firstItem="5yE-Qi-hBZ" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" id="M9J-RL-SmU"/>
                             <constraint firstItem="GmC-AK-Rr2" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="Qif-Hi-6Oq"/>
                         </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="player1Score" destination="4Bx-e8-vUl" id="hgm-26-1xq"/>
                         <outlet property="player2Score" destination="r7r-Lp-hcO" id="xIq-M5-awe"/>
@@ -224,17 +225,20 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TT4-pH-mkq">
-                                <rect key="frame" x="547" y="28" width="33" height="36"/>
+                                <rect key="frame" x="20" y="20" width="33" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="5Sa-q4-Zop" kind="unwind" identifier="Exit" unwindAction="unwindToViewController:" id="fm3-Ky-szA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27418608579999998" green="0.50196081400000003" blue="0.32794947130000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TT4-pH-mkq" firstAttribute="top" secondItem="C4F-qD-TnV" secondAttribute="bottom" constant="8" id="QLx-Ww-gUg"/>
-                            <constraint firstAttribute="trailing" secondItem="TT4-pH-mkq" secondAttribute="trailing" constant="20" id="szR-ww-UWo"/>
+                            <constraint firstItem="TT4-pH-mkq" firstAttribute="leading" secondItem="IdM-WR-shC" secondAttribute="leading" constant="20" id="HKa-Jr-ZFD"/>
+                            <constraint firstItem="TT4-pH-mkq" firstAttribute="top" secondItem="C4F-qD-TnV" secondAttribute="bottom" id="QLx-Ww-gUg"/>
                             <constraint firstItem="7NS-CN-YLo" firstAttribute="centerX" secondItem="IdM-WR-shC" secondAttribute="centerX" id="t0H-cT-Uiw"/>
                             <constraint firstItem="7NS-CN-YLo" firstAttribute="centerY" secondItem="IdM-WR-shC" secondAttribute="centerY" id="yH2-nd-nzr"/>
                         </constraints>
@@ -247,6 +251,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0t-UD-00T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Sa-q4-Zop" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="880" y="571"/>
         </scene>
@@ -262,7 +267,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="7UB-Ps-Dde">
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="7UB-Ps-Dde">
                                 <rect key="frame" x="133" y="115" width="156" height="369"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congrats to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsc-pj-agX">
@@ -292,7 +297,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-Jc-nIN">
-                                <rect key="frame" x="539" y="28" width="33" height="36"/>
+                                <rect key="frame" x="20" y="20" width="33" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,10 +309,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.27418608579999998" green="0.50196081400000003" blue="0.32794947130000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gnG-Jc-nIN" firstAttribute="top" secondItem="AhR-vg-wkd" secondAttribute="bottom" constant="8" id="49m-rR-uoh"/>
                             <constraint firstItem="7UB-Ps-Dde" firstAttribute="centerY" secondItem="7aS-0j-ucm" secondAttribute="centerY" id="Cbs-65-WXR"/>
-                            <constraint firstAttribute="trailing" secondItem="gnG-Jc-nIN" secondAttribute="trailing" constant="28" id="ET8-6H-LWk"/>
+                            <constraint firstItem="gnG-Jc-nIN" firstAttribute="top" secondItem="AhR-vg-wkd" secondAttribute="bottom" id="cUP-WI-Fdb"/>
                             <constraint firstItem="7UB-Ps-Dde" firstAttribute="centerX" secondItem="7aS-0j-ucm" secondAttribute="centerX" id="pj9-Db-LIj"/>
+                            <constraint firstItem="gnG-Jc-nIN" firstAttribute="leading" secondItem="7aS-0j-ucm" secondAttribute="leading" constant="20" id="vC1-WZ-Xh8"/>
                         </constraints>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -25,10 +25,8 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     var count: Int!
     var score1 = 0
     var score2 = 0
-    var finalIntro = "Congrats to"
-    var finalWinner = ""
-    var finalResult = "You won"
-    var finalScore = ""
+    var winnerText: String!
+    var scoreText: String!
     
 
 //MARK: viewDidLoad()
@@ -36,6 +34,7 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     //This function loads a session to watch when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
@@ -78,30 +77,38 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     func timesUp() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if score1 > score2 {
-            finalWinner = "Player 1"
-            finalScore = "\(score1) - \(score2)"
+            winnerText = "Player 1"
+            scoreText = "\(score1) - \(score2)"
         } else if score2 > score1 {
-            finalWinner = "Player 2"
-            finalScore = "\(score2) - \(score1)"
+            winnerText = "Player 2"
+            scoreText = "\(score2) - \(score1)"
         } else {
-            finalIntro = "Good job to"
-            finalWinner = "Both sides"
-            finalResult = "You tied"
-            finalScore = "\(score1) - \(score2)"
+            winnerText = "Tie Game"
+            scoreText = "\(score1) - \(score2)"
         }
         self.performSegueWithIdentifier("endOfGameFromScoreboardSegue", sender: self)
     }
     
     
+//MARK: Action Functions
+    
+    //This function runs an unwind segue when the exit button is tapped
+    @IBAction func exitButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("exitSegue", sender: self)
+    }
+    
+    
 //MARK: Segues
     
-    //This function holds the info needed when a segue is called from the ScoreboardViewController and does the appropriate actions to make it work
+    ///This function holds the info needed when a segue is called from the SwipeViewController. It checks to see which segue is called (either the regular one or the unwind segue) and does the appropriate actions to make it work
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let finalViewController = segue.destinationViewController as! FinalViewController
-        finalViewController.introText = finalIntro
-        finalViewController.winnerText = finalWinner
-        finalViewController.resultText = finalResult
-        finalViewController.scoreText = finalScore
+        if let identifier = segue.identifier {
+            if identifier != "exitSegue" {
+                let finalViewController = segue.destinationViewController as! FinalViewController
+                finalViewController.playerText = winnerText
+                finalViewController.resultText = scoreText
+            }
+        }
     }
 
 }

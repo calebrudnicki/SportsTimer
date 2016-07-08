@@ -21,7 +21,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Variables
     
-    var countdown: NSTimeInterval = 20
+    var countdown: NSTimeInterval = 10
     var backingTimer: NSTimer?
     var score1 = 0
     var score2 = 0

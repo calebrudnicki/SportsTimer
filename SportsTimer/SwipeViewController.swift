@@ -28,10 +28,9 @@ class SwipeViewController: UIViewController {
     var count = 10
     var score1 = 0
     var score2 = 0
-    var finalIntro = "Congrats to"
-    var finalWinner = ""
-    var finalResult = "You won"
-    var finalScore = ""
+    var winnerText: String!
+    var scoreText: String!
+    var playImage:UIImage?
     
     
 //MARK: viewDidLoad()
@@ -81,16 +80,14 @@ class SwipeViewController: UIViewController {
     func timesUp() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if score1 > score2 {
-            finalWinner = "Player 1"
-            finalScore = "\(score1) - \(score2)"
+            winnerText = "Player 1"
+            scoreText = "\(score1) - \(score2)"
         } else if score2 > score1 {
-            finalWinner = "Player 2"
-            finalScore = "\(score2) - \(score1)"
+            winnerText = "Player 2"
+            scoreText = "\(score2) - \(score1)"
         } else {
-            finalIntro = "Good job to"
-            finalWinner = "Both sides"
-            finalResult = "You tied"
-            finalScore = "\(score1) - \(score2)"
+            winnerText = "Tie Game"
+            scoreText = "\(score1) - \(score2)"
         }
         self.performSegueWithIdentifier("endOfGameFromSwipeSegue", sender: self)
     }
@@ -108,41 +105,43 @@ class SwipeViewController: UIViewController {
         rightSwipe.direction = .Right
     }
     
-    //This function handles each swipe and tells the program what to do after each swipe
+    //This function handles each swipe, telling the program what to do after each swipe and changing the label's colors momentarily
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .Right {
             score1 += 1
             player1Score.text = String(score1)
-            if player2Score.textColor == UIColor.blueColor() {
-                player1Score.textColor = UIColor.blueColor()
-                player2Score.textColor = UIColor.whiteColor()
-            } else {
-                player1Score.textColor = UIColor.blueColor()
-            }
+            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                    self.player1Score.textColor = UIColor.redColor()
+                    self.view.alpha = 0.0
+                }, completion: { finished in
+                    self.player1Score.textColor = UIColor.whiteColor()
+            })
+            self.view.alpha = 1.0
         }
         if sender.direction == .Left {
             score2 += 1
             player2Score.text = String(score2)
-            if player1Score.textColor == UIColor.blueColor() {
-                player2Score.textColor = UIColor.blueColor()
-                player1Score.textColor = UIColor.whiteColor()
-            } else {
-                player2Score.textColor = UIColor.blueColor()
-            }
+            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                self.player2Score.textColor = UIColor.redColor()
+                self.view.alpha = 0.0
+                }, completion: { finished in
+                    self.player2Score.textColor = UIColor.whiteColor()
+            })
+            self.view.alpha = 1.0
         }
     }
     
     
-//MARK: Action / Alerts Functions
+//MARK: Action Functions
     
-    //This function  double checks to see if the user really wants to delete the current game once the button is tapped. Also once this button is tapped, it pauses the clock
+    //This function uses an alert to double checks to see if the user really wants to delete the current game once the button is tapped. Also once this button is tapped, it pauses the clock
     @IBAction func exitButtonTapped(sender: AnyObject) {
         isPaused = true
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to end the game?", preferredStyle: .ActionSheet)
-        let yesAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+        let yesAction = UIAlertAction(title: "Yes, I want to exit", style: .Default) { (action) in
             self.performSegueWithIdentifier("exitSegue", sender: self)
         }
-        let noAction = UIAlertAction(title: "No, Resume Playing", style: .Default) { (handler) in
+        let noAction = UIAlertAction(title: "No, resume playing", style: .Default) { (handler) in
             self.isPaused = false
         }
         alertController.addAction(yesAction)
@@ -150,14 +149,21 @@ class SwipeViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    //This function pauses the timer when the pause button is pressed
+    //This function pauses the timer when the pause button is pressed and changes the button's color
     @IBAction func pauseButtonPressed(sender: AnyObject) {
         if isPaused == false {
             isPaused = true
+            leftSwipe.enabled = false
+            rightSwipe.enabled = false
+            pauseButton.tintColor = UIColor.redColor()
         } else {
             isPaused = false
+            leftSwipe.enabled = true
+            rightSwipe.enabled = true
+            pauseButton.tintColor = UIColor.blackColor()
         }
     }
+   
     
 //MARK: Segues
     
@@ -166,10 +172,8 @@ class SwipeViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier != "exitSegue" {
                 let finalViewController = segue.destinationViewController as! FinalViewController
-                finalViewController.introText = finalIntro
-                finalViewController.winnerText = finalWinner
-                finalViewController.resultText = finalResult
-                finalViewController.scoreText = finalScore
+                finalViewController.playerText = winnerText
+                finalViewController.resultText = scoreText
             }
         }
     }

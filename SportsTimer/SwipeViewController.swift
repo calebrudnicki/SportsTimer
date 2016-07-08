@@ -16,6 +16,7 @@ class SwipeViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var player1Score: UILabel!
     @IBOutlet weak var player2Score: UILabel!
+    @IBOutlet weak var pauseButton: UIBarButtonItem!
     
     
 //MARK: Variables
@@ -76,7 +77,7 @@ class SwipeViewController: UIViewController {
         }
     }
     
-    //This function that runs when the timer runs out plays a notification sound and sets all necessary game info to variables before calling the segue to the FinalViewController
+    //This function plays a notification sound and sets all necessary game info to variables before calling the segue to the FinalViewController
     func timesUp() {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if score1 > score2 {
@@ -91,7 +92,7 @@ class SwipeViewController: UIViewController {
             finalResult = "You tied"
             finalScore = "\(score1) - \(score2)"
         }
-        self.performSegueWithIdentifier("endOfGameSegue", sender: self)
+        self.performSegueWithIdentifier("endOfGameFromSwipeSegue", sender: self)
     }
    
     
@@ -112,18 +113,30 @@ class SwipeViewController: UIViewController {
         if sender.direction == .Right {
             score1 += 1
             player1Score.text = String(score1)
+            if player2Score.textColor == UIColor.blueColor() {
+                player1Score.textColor = UIColor.blueColor()
+                player2Score.textColor = UIColor.whiteColor()
+            } else {
+                player1Score.textColor = UIColor.blueColor()
+            }
         }
         if sender.direction == .Left {
             score2 += 1
             player2Score.text = String(score2)
+            if player1Score.textColor == UIColor.blueColor() {
+                player2Score.textColor = UIColor.blueColor()
+                player1Score.textColor = UIColor.whiteColor()
+            } else {
+                player2Score.textColor = UIColor.blueColor()
+            }
         }
     }
     
     
 //MARK: Action / Alerts Functions
     
-    //This function acts as both a pause button and a double check to see if the user really wants to delete the current game once the Exit button is tapped. Once this button is tapped, it pauses the clock 
-    @IBAction func exitOrPauseButtonTapped(sender: AnyObject) {
+    //This function  double checks to see if the user really wants to delete the current game once the button is tapped. Also once this button is tapped, it pauses the clock
+    @IBAction func exitButtonTapped(sender: AnyObject) {
         isPaused = true
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to end the game?", preferredStyle: .ActionSheet)
         let yesAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
@@ -137,6 +150,14 @@ class SwipeViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    //This function pauses the timer when the pause button is pressed
+    @IBAction func pauseButtonPressed(sender: AnyObject) {
+        if isPaused == false {
+            isPaused = true
+        } else {
+            isPaused = false
+        }
+    }
     
 //MARK: Segues
     

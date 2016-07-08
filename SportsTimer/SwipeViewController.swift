@@ -25,7 +25,7 @@ class SwipeViewController: UIViewController {
     let rightSwipe = UISwipeGestureRecognizer()
     var timer: NSTimer = NSTimer()
     var isPaused = false
-    var count = 10
+    var count = 25
     var score1 = 0
     var score2 = 0
     var winnerText: String!
@@ -110,8 +110,8 @@ class SwipeViewController: UIViewController {
         if sender.direction == .Right {
             score1 += 1
             player1Score.text = String(score1)
-            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
-                    self.player1Score.textColor = UIColor.redColor()
+            UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                    self.player1Score.textColor = UIColor.greenColor()
                     self.view.alpha = 0.0
                 }, completion: { finished in
                     self.player1Score.textColor = UIColor.whiteColor()
@@ -121,8 +121,8 @@ class SwipeViewController: UIViewController {
         if sender.direction == .Left {
             score2 += 1
             player2Score.text = String(score2)
-            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
-                self.player2Score.textColor = UIColor.redColor()
+            UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: {
+                self.player2Score.textColor = UIColor.greenColor()
                 self.view.alpha = 0.0
                 }, completion: { finished in
                     self.player2Score.textColor = UIColor.whiteColor()

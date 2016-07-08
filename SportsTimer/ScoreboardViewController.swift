@@ -99,7 +99,7 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     
     
 //MARK: Segues
-    
+
     ///This function holds the info needed when a segue is called from the SwipeViewController. It checks to see which segue is called (either the regular one or the unwind segue) and does the appropriate actions to make it work
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {

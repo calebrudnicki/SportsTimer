@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     //This funtion sends an alert to the user and only allow he or she to go on if the okAction was selected
     func watchAlert() {
         let alertController = UIAlertController(title: nil, message: "Make sure your watch is ready before continuing", preferredStyle: .ActionSheet)
-        let okAction = UIAlertAction(title: "OK, I'm ready to play", style: .Default) { (action) in
+        let okAction = UIAlertAction(title: "Ok, I'm ready to play", style: .Default) { (action) in
             self.performSegueWithIdentifier("startOfGameScoreboardSegue", sender: self)
         }
         let notReadyAction = UIAlertAction(title: "Wait. I'm not ready yet", style: .Cancel, handler: nil)

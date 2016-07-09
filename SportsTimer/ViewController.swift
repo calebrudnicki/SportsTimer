@@ -30,10 +30,10 @@ class ViewController: UIViewController {
     }
   
     
-//MARK: viewDidAppear()
+//MARK: viewWillAppear()
     
     //This functions sets some layout to the start button
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         startButton.layer.borderWidth = 1
         startButton.layer.cornerRadius = startButton.frame.width / 2
     }

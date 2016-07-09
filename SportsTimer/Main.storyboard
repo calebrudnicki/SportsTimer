@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OKf-6u-B9X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sfM-yZ-REW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,6 +7,80 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="sBU-G0-48z">
+            <objects>
+                <viewController id="sfM-yZ-REW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rJG-M7-NmQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="On3-Kq-Orb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8OH-fG-W2O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2zO-3s-WU1">
+                                <rect key="frame" x="30" y="66" width="540" height="468"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Please Read:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYn-MA-qjg">
+                                        <rect key="frame" x="172" y="0.0" width="198" height="64"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="40"/>
+                                        <color key="textColor" red="0.90588235855102539" green="0.29803922772407532" blue="0.23529411852359772" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99m-Mh-P5v">
+                                        <rect key="frame" x="6" y="94" width="529" height="180"/>
+                                        <string key="text">This is a mobile scoreboard application. Use it to keep track of any sports, games, and such. When you enter the app, you will have two choices: Score from Phone and Score from Watch. If you chose Score from Phone, you will need to swipe left and right to add to each tally. If you chose Score from Watch, you will need to use the buttons on the watch to add to the tally. With this option, you will also be able to use the phone as a virtual scoreboard. It will not be interactive but it will give a live feed of the watch. Select Continue when you are ready to use Semafor.</string>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="16"/>
+                                        <color key="textColor" red="0.90588235855102539" green="0.29803922772407532" blue="0.23529411852359772" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-gb-xYP">
+                                        <rect key="frame" x="81" y="304" width="378" height="165"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="0d8-6x-VfF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="OKf-6u-B9X" kind="show" id="4m4-Ra-xXg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z4C-gb-xYP" firstAttribute="width" secondItem="2zO-3s-WU1" secondAttribute="width" multiplier="0.7" id="NF7-1C-1d7"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a Caleb Rudnicki production" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9a-E5-yaQ">
+                                <rect key="frame" x="418" y="566" width="162" height="14"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2zO-3s-WU1" firstAttribute="centerY" secondItem="8OH-fG-W2O" secondAttribute="centerY" id="8Vh-q4-T1u"/>
+                            <constraint firstAttribute="trailing" secondItem="U9a-E5-yaQ" secondAttribute="trailing" constant="20" id="NZJ-f4-eAs"/>
+                            <constraint firstItem="2zO-3s-WU1" firstAttribute="height" secondItem="8OH-fG-W2O" secondAttribute="height" multiplier="0.78" id="Q3S-6i-Fpf"/>
+                            <constraint firstItem="2zO-3s-WU1" firstAttribute="width" secondItem="8OH-fG-W2O" secondAttribute="width" multiplier="0.9" id="dZ9-h5-eSk"/>
+                            <constraint firstItem="On3-Kq-Orb" firstAttribute="top" secondItem="U9a-E5-yaQ" secondAttribute="bottom" constant="20" id="qpf-rd-sff"/>
+                            <constraint firstItem="2zO-3s-WU1" firstAttribute="centerX" secondItem="8OH-fG-W2O" secondAttribute="centerX" id="r4z-ZK-6fs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dup-Ov-lzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-622" y="948"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="kKY-OI-MPH">
             <objects>
@@ -23,7 +97,7 @@
                                 <rect key="frame" x="90" y="150" width="420" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-VZ-yEu">
-                                        <rect key="frame" x="98" y="0.0" width="225" height="225"/>
+                                        <rect key="frame" x="97.5" y="0.0" width="225" height="225"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NTG-VZ-yEu" secondAttribute="height" multiplier="1:1" id="GY8-Ry-Qo8"/>
@@ -36,7 +110,7 @@
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KAW-U5-RGj">
-                                        <rect key="frame" x="87" y="255" width="247" height="46"/>
+                                        <rect key="frame" x="86.5" y="255" width="247" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="6AV-Ui-xyE"/>
                                         </constraints>
@@ -85,6 +159,10 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D3-8P-ebf">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem id="SjO-sF-zC4">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="Bd3-ql-qjJ">
@@ -105,10 +183,16 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="I23-2h-mbZ">
-                                <rect key="frame" x="30" y="185" width="540" height="201"/>
+                                <rect key="frame" x="30" y="185" width="540" height="264"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WARNING: This is just a scoreboard. You cannot manipulate this screen. You must use the watch." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-e4-jDB">
+                                        <rect key="frame" x="12" y="0.0" width="517" height="28"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
+                                        <color key="textColor" red="0.90588235859999999" green="0.29803922770000002" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GmC-AK-Rr2">
-                                        <rect key="frame" x="114" y="0.0" width="314" height="64"/>
+                                        <rect key="frame" x="114" y="63" width="314" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start Watch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-bn-hDm">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="64"/>
@@ -119,7 +203,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="oml-K7-qS9">
-                                        <rect key="frame" x="127" y="99" width="286" height="102"/>
+                                        <rect key="frame" x="127" y="162" width="286" height="102"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="z6A-ZK-nYo">
                                                 <rect key="frame" x="0.0" y="0.0" width="103" height="102"/>
@@ -192,11 +276,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="7NS-CN-YLo">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7NS-CN-YLo">
                                 <rect key="frame" x="30" y="66" width="540" height="468"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytS-ne-bmo">
-                                        <rect key="frame" x="202" y="0.0" width="137" height="331"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="WARNING: Swipe right to add to Player 1's score. Swipe left to add to Player 2's score" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRa-4O-5HT">
+                                        <rect key="frame" x="28" y="0.0" width="486" height="68"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
+                                        <color key="textColor" red="0.90588235859999999" green="0.29803922770000002" blue="0.23529411850000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytS-ne-bmo">
+                                        <rect key="frame" x="202" y="93" width="137" height="249"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="215"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -245,6 +335,11 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enx-9A-8dU">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem id="mZT-AD-Kcc">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="fBh-zw-ngX">
@@ -264,7 +359,7 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5AB-ic-6Rt">
-                                <rect key="frame" x="0.0" y="552" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="564" width="600" height="36"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zsl-wa-NHY"/>
                                     <barButtonItem style="plain" systemItem="pause" id="cDd-cx-FEV">
@@ -282,7 +377,7 @@
                         <constraints>
                             <constraint firstItem="7NS-CN-YLo" firstAttribute="width" secondItem="IdM-WR-shC" secondAttribute="width" multiplier="0.9" id="5mq-V6-xbE"/>
                             <constraint firstItem="7NS-CN-YLo" firstAttribute="centerX" secondItem="IdM-WR-shC" secondAttribute="centerX" id="C5r-H3-x4G"/>
-                            <constraint firstItem="5AB-ic-6Rt" firstAttribute="height" secondItem="IdM-WR-shC" secondAttribute="height" multiplier="0.08" id="MGQ-Eh-KNt"/>
+                            <constraint firstItem="5AB-ic-6Rt" firstAttribute="height" secondItem="IdM-WR-shC" secondAttribute="height" multiplier="0.06" id="MGQ-Eh-KNt"/>
                             <constraint firstItem="7NS-CN-YLo" firstAttribute="centerY" secondItem="IdM-WR-shC" secondAttribute="centerY" id="U3J-Bf-hid"/>
                             <constraint firstItem="5AB-ic-6Rt" firstAttribute="leading" secondItem="IdM-WR-shC" secondAttribute="leading" id="VRp-L4-AVD"/>
                             <constraint firstItem="Pe7-YC-qtk" firstAttribute="top" secondItem="5AB-ic-6Rt" secondAttribute="bottom" id="kZE-4N-TmZ"/>
@@ -319,6 +414,10 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwS-99-KA0">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem id="rVW-IL-vGL">
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="8Wj-A0-ZVs">
@@ -345,7 +444,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgu-IW-f2V">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgu-IW-f2V">
                                         <rect key="frame" x="0.0" y="147" width="540" height="35"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,6 +481,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GSl-tf-pmk"/>
+        <segue reference="gb4-gH-8iO"/>
     </inferredMetricsTieBreakers>
 </document>

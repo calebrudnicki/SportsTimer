@@ -22,7 +22,7 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
 //MARK: Variables
     
     var session: WCSession!
-    var count: Int!
+    var count: String!
     var score1 = 0
     var score2 = 0
     var winnerText: String!
@@ -55,17 +55,17 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     //This function connects with the watch to read data and use it on the phone. The session runs on a background thread which does not work well if you want to update UI elements. It then calls the timesUp() method with the timer from the watch is at 0
     func session(session: WCSession, didReceiveMessage gameStats: [String : AnyObject]) {
         if let gameStatsScores = gameStats["Scores"] as? [Int] {
-            count = gameStatsScores[0]
+            count = self.convertSeconds(gameStatsScores[0])
             score1 = gameStatsScores[1]
             score2 = gameStatsScores[2]
             //This method allows you to jump from the background thread that the session is in to the main thread to update the UI
             dispatch_async(dispatch_get_main_queue()) {
-                self.timerLabel.text = String(gameStatsScores[0])
+                self.timerLabel.text = self.count
                 self.player1Score.text = String(self.score1)
                 self.player2Score.text = String(self.score2)
             }
         }
-        if count == 0 {
+        if Int(count) == 0 {
             timesUp()
         }
     }
@@ -87,6 +87,14 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
             scoreText = "\(score1) - \(score2)"
         }
         self.performSegueWithIdentifier("endOfGameFromScoreboardSegue", sender: self)
+    }
+    
+    //This function converts seconds into the string format minutes:seconds
+    func convertSeconds(seconds: Int) -> String {
+        let secs: Double! = Double(seconds)
+        let minutePlace = Int(floor(secs / 60) % 60)
+        let secondPlace = Int(floor(secs) % 60)
+        return String(format: "%02d:%02d", minutePlace, secondPlace)
     }
     
     

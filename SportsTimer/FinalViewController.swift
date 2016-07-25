@@ -12,7 +12,6 @@ class FinalViewController: UIViewController {
 
 //MARK: Outlets
     
-
     @IBOutlet weak var winnerLabel: UILabel!
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -25,7 +24,7 @@ class FinalViewController: UIViewController {
     var resultText = ""
     
     
-//MARK: viewDidLoad()
+//MARK: Boilerplate Functions
     
     //This function assigns all of the labels to their respective string values from SwipeViewController
     override func viewDidLoad() {
@@ -34,9 +33,6 @@ class FinalViewController: UIViewController {
         resultLabel.text = resultText
     }
 
-    
-//MARK: didReceiveMemoryWarning()
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

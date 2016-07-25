@@ -29,12 +29,11 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
     var scoreText: String!
     
 
-//MARK: viewDidLoad()
+//MARK: Boilerplate Functions
     
     //This function loads a session to watch when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
@@ -42,9 +41,6 @@ class ScoreboardViewController: UIViewController, WCSessionDelegate {
         }
     }
 
-    
-//MARK: didReceiveMemoryWarning()
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

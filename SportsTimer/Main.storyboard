@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Opening View Controller-->
         <scene sceneID="sBU-G0-48z">
             <objects>
-                <viewController id="sfM-yZ-REW" sceneMemberID="viewController">
+                <viewController title="Opening View Controller" id="sfM-yZ-REW" customClass="OpeningViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rJG-M7-NmQ"/>
                         <viewControllerLayoutGuide type="bottom" id="On3-Kq-Orb"/>
@@ -51,7 +51,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="OKf-6u-B9X" kind="show" id="4m4-Ra-xXg"/>
+                                            <action selector="continueButtonTapped:" destination="sfM-yZ-REW" eventType="touchUpInside" id="W1I-ja-yAn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -76,15 +76,18 @@
                             <constraint firstItem="2zO-3s-WU1" firstAttribute="centerX" secondItem="8OH-fG-W2O" secondAttribute="centerX" id="r4z-ZK-6fs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="OKf-6u-B9X" kind="show" identifier="continueToHomeSegue" id="iSj-1T-dV9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dup-Ov-lzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-622" y="948"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="kKY-OI-MPH">
             <objects>
-                <viewController id="OKf-6u-B9X" customClass="ViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home View Controller" id="OKf-6u-B9X" customClass="HomeViewController" customModule="SportsTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eTP-nq-NMX"/>
                         <viewControllerLayoutGuide type="bottom" id="fdb-Nd-P7M"/>
@@ -156,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D3-8P-ebf">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D3-8P-ebf">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -174,7 +177,6 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="exitButtonTapped:" destination="1Jk-Jm-xvm" eventType="touchUpInside" id="ndC-JF-ZGF"/>
                                                     <segue destination="XCN-HB-bnT" kind="unwind" identifier="exitSegue" unwindAction="unwindToViewController:" id="nJD-zy-oxd"/>
                                                 </connections>
                                             </button>
@@ -332,7 +334,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enx-9A-8dU">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enx-9A-8dU">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -411,7 +413,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwS-99-KA0">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwS-99-KA0">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="0.086274512110000007" green="0.62745100259999997" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -481,6 +483,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gb4-gH-8iO"/>
+        <segue reference="GSl-tf-pmk"/>
     </inferredMetricsTieBreakers>
 </document>

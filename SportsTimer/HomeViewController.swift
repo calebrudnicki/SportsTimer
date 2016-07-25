@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
 //MARK: Outlets
 
@@ -16,22 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
     
-//MARK: viewDidLoad()
+//MARK: Boilerplate Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    
-//MARK: didReceieveMemoryWarning()
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
   
-    
-//MARK: viewWillAppear()
-    
     //This functions sets some layout to the start button
     override func viewWillAppear(animated: Bool) {
         startButton.layer.borderWidth = 1

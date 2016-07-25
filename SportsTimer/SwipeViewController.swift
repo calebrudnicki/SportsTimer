@@ -33,7 +33,7 @@ class SwipeViewController: UIViewController {
     var playImage:UIImage?
     
     
-//MARK: viewDidLoad()
+//MARK: Boilerplate Functions
     
     //This function starts a new game and also sets all labels to their preset values
     override func viewDidLoad() {
@@ -44,9 +44,6 @@ class SwipeViewController: UIViewController {
         player2Score.text = String(score2)
     }
     
-    
-//MARK: didReceiveMemoryWarning()
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

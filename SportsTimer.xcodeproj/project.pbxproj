@@ -8,23 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		822191E11D1C2AA500309328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822191E01D1C2AA500309328 /* AppDelegate.swift */; };
-		822191E31D1C2AA500309328 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822191E21D1C2AA500309328 /* HomeViewController.swift */; };
 		822191E81D1C2AA500309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822191E71D1C2AA500309328 /* Assets.xcassets */; };
 		822191EB1D1C2AA500309328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822191E91D1C2AA500309328 /* LaunchScreen.storyboard */; };
 		822191F01D1C2AA600309328 /* SportsTimer WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 822191EF1D1C2AA600309328 /* SportsTimer WatchKit App.app */; };
 		822191F61D1C2AA600309328 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822191F41D1C2AA600309328 /* Interface.storyboard */; };
 		822191F81D1C2AA600309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822191F71D1C2AA600309328 /* Assets.xcassets */; };
 		822191FF1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		822192061D1C2AA600309328 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192051D1C2AA600309328 /* InterfaceController.swift */; };
+		822192061D1C2AA600309328 /* ScoreboardInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */; };
 		822192081D1C2AA600309328 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192071D1C2AA600309328 /* ExtensionDelegate.swift */; };
 		8221920A1D1C2AA600309328 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192091D1C2AA600309328 /* NotificationController.swift */; };
 		8221920C1D1C2AA600309328 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8221920B1D1C2AA600309328 /* GlanceController.swift */; };
 		8221920E1D1C2AA600309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8221920D1D1C2AA600309328 /* Assets.xcassets */; };
-		824079BF1D45AAF2009056A8 /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824079BE1D45AAF2009056A8 /* OpeningViewController.swift */; };
+		822B6E0A1D57A86A002566AA /* WatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B6E091D57A86A002566AA /* WatchSession.swift */; };
+		822B6E0C1D57AA0A002566AA /* PhoneSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B6E0B1D57AA0A002566AA /* PhoneSession.swift */; };
 		824435331D2D6FA200383452 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824435321D2D6FA200383452 /* ScoreboardViewController.swift */; };
-		827204AC1D1C718100AAD265 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827204AB1D1C718100AAD265 /* SwipeViewController.swift */; };
 		8284C9831D2EE70600A08EEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8284C9821D2EE70600A08EEF /* Main.storyboard */; };
-		829260AE1D2C49D800AA20D8 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829260AD1D2C49D800AA20D8 /* FinalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +70,6 @@
 /* Begin PBXFileReference section */
 		822191DD1D1C2AA500309328 /* SportsTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		822191E01D1C2AA500309328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		822191E21D1C2AA500309328 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		822191E71D1C2AA500309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		822191EA1D1C2AA500309328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		822191EC1D1C2AA500309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,17 +79,16 @@
 		822191F91D1C2AA600309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SportsTimer WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		822192041D1C2AA600309328 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		822192051D1C2AA600309328 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardInterfaceController.swift; sourceTree = "<group>"; };
 		822192071D1C2AA600309328 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		822192091D1C2AA600309328 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		8221920B1D1C2AA600309328 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		8221920D1D1C2AA600309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8221920F1D1C2AA600309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		824079BE1D45AAF2009056A8 /* OpeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
+		822B6E091D57A86A002566AA /* WatchSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSession.swift; sourceTree = "<group>"; };
+		822B6E0B1D57AA0A002566AA /* PhoneSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSession.swift; sourceTree = "<group>"; };
 		824435321D2D6FA200383452 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
-		827204AB1D1C718100AAD265 /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		8284C9821D2EE70600A08EEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		829260AD1D2C49D800AA20D8 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,11 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				822191E01D1C2AA500309328 /* AppDelegate.swift */,
-				824079BE1D45AAF2009056A8 /* OpeningViewController.swift */,
-				822191E21D1C2AA500309328 /* HomeViewController.swift */,
+				822B6E0B1D57AA0A002566AA /* PhoneSession.swift */,
 				824435321D2D6FA200383452 /* ScoreboardViewController.swift */,
-				827204AB1D1C718100AAD265 /* SwipeViewController.swift */,
-				829260AD1D2C49D800AA20D8 /* FinalViewController.swift */,
 				8284C9821D2EE70600A08EEF /* Main.storyboard */,
 				822191E71D1C2AA500309328 /* Assets.xcassets */,
 				822191E91D1C2AA500309328 /* LaunchScreen.storyboard */,
@@ -163,7 +156,8 @@
 		822192021D1C2AA600309328 /* SportsTimer WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				822192051D1C2AA600309328 /* InterfaceController.swift */,
+				822B6E091D57A86A002566AA /* WatchSession.swift */,
+				822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */,
 				822192071D1C2AA600309328 /* ExtensionDelegate.swift */,
 				822192091D1C2AA600309328 /* NotificationController.swift */,
 				8221920B1D1C2AA600309328 /* GlanceController.swift */,
@@ -317,12 +311,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				822191E31D1C2AA500309328 /* HomeViewController.swift in Sources */,
-				824079BF1D45AAF2009056A8 /* OpeningViewController.swift in Sources */,
-				829260AE1D2C49D800AA20D8 /* FinalViewController.swift in Sources */,
 				822191E11D1C2AA500309328 /* AppDelegate.swift in Sources */,
-				827204AC1D1C718100AAD265 /* SwipeViewController.swift in Sources */,
 				824435331D2D6FA200383452 /* ScoreboardViewController.swift in Sources */,
+				822B6E0C1D57AA0A002566AA /* PhoneSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,8 +322,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8221920A1D1C2AA600309328 /* NotificationController.swift in Sources */,
+				822B6E0A1D57A86A002566AA /* WatchSession.swift in Sources */,
 				822192081D1C2AA600309328 /* ExtensionDelegate.swift in Sources */,
-				822192061D1C2AA600309328 /* InterfaceController.swift in Sources */,
+				822192061D1C2AA600309328 /* ScoreboardInterfaceController.swift in Sources */,
 				8221920C1D1C2AA600309328 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

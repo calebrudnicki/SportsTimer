@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Outlets
 
@@ -21,11 +21,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Variables
     
-    var countdown: NSTimeInterval = 100
+    var countdown: NSTimeInterval = 10
     var backingTimer: NSTimer?
     var score1 = 0
     var score2 = 0
-    var session: WCSession!
    
     
 //MARK: Setting Default Values and Starting a New Game
@@ -33,7 +32,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     //This functions calls for a new game and also sets the labels to their preset values
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        newGame()
+        self.newGame()
         player1Score.setTitle(String(score1))
         player2Score.setTitle(String(score2))
     }
@@ -44,27 +43,28 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     //This function creates and starts a session as long as it is supported
     override func willActivate() {
         super.willActivate()
-        if WCSession.isSupported() {
-            session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }
+        WatchSession.sharedInstance.startSession()
     }
 
     override func didDeactivate() {
         super.didDeactivate()
     }
     
+    override init () {
+        super.init ()
+        self.setTitle("End Game")
+    }
+    
     
 //MARK: Starting a New Game
     
     //This function that is called when the start game button is chosen
-    @IBAction func newGame() {
+    func newGame() {
         let date = NSDate(timeIntervalSinceNow: countdown)
         timer.setDate(date)
         timer.start()
         //This is a one second timer that calls the secondTimerFired() function everytime it ends, then it repeats
-        backingTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(InterfaceController.secondTimerFired), userInfo: nil, repeats: true)
+        backingTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardInterfaceController.secondTimerFired), userInfo: nil, repeats: true)
     }
     
     
@@ -72,7 +72,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     //This function subtracts from the countdown variable every second when it is called and then calls the timesUp() function when countdown is less than 0
     func secondTimerFired() {
-        self.sendMessageToPhone()
+        WatchSession.sharedInstance.givePhoneScoreData(countdown, score1: score1, score2: score2)
         countdown -= 1
         if countdown < 0 {
             self.timesUp()
@@ -104,7 +104,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
    
     
-//MARK: Button Handlers
+//MARK: Actions
     
     //This function adds a goal to Player 1's score and sends that info to the phone
     @IBAction func goalButton1() {
@@ -116,17 +116,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBAction func goalButton2() {
         score2 = score2 + 1
         player2Score.setTitle(String(score2))
-    }
-    
-    
-//MARK: Talking to Phone
-    
-    //This function sends the time left in the game and each score over to the phone
-    func sendMessageToPhone() {
-        let gameStats = ["Scores": [countdown, score1, score2]]
-        session.sendMessage(gameStats, replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
     }
     
 }

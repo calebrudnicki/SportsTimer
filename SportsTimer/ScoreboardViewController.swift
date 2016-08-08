@@ -17,18 +17,10 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var player1Score: UILabel!
     @IBOutlet weak var player2Score: UILabel!
     
-    
-//MARK: Variables
-    
-    var count: String!
-    var score1 = 0
-    var score2 = 0
-    var winnerText: String!
-    var scoreText: String!
-    
 
 //MARK: Boilerplate Functions
     
+    //This function creates an instance of a shared session and establishes this class as an observer of the givePhoneScoreData notification
     override func viewDidLoad() {
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
@@ -39,51 +31,54 @@ class ScoreboardViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //This function removes the observer when the view disappears
     override func viewDidDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+  
+
+//MARK: Watch Communication Functions
     
-    
+    //This function that gets called everytime a givePhoneScoreData notification is posted calls displayLabels()
     func receivedGivePhoneScoreDataNotification(notification: NSNotification) {
-        print("Made it here")
+        let dataDict = notification.object as? [String : AnyObject]
+        self.displayLabels(dataDict!)
     }
     
     
-////MARK: Session
-//
-//    //This function connects with the watch to read data and use it on the phone. The session runs on a background thread which does not work well if you want to update UI elements. It then calls the timesUp() method with the timer from the watch is at 0
-//    func session(session: WCSession, didReceiveMessage gameStats: [String : AnyObject]) {
-//        if let gameStatsScores = gameStats["Scores"] as? [Int] {
-//            count = self.convertSeconds(gameStatsScores[0])
-//            score1 = gameStatsScores[1]
-//            score2 = gameStatsScores[2]
-//            //This method allows you to jump from the background thread that the session is in to the main thread to update the UI
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self.timerLabel.text = self.count
-//                self.player1Score.text = String(self.score1)
-//                self.player2Score.text = String(self.score2)
-//            }
-//        }
-//        if Int(count) == 0 {
-//            timesUp()
-//        }
-//    }
+//MARK: Label Functions
+    
+    //This functions updates all of the labels to match the watch's data
+    func displayLabels(dataDict: [String : AnyObject]) {
+        timerLabel.text = String(dataDict["Countdown"]!)
+        player1Score.text = String(dataDict["Score1"]!)
+        player2Score.text = String(dataDict["Score2"]!)
+        if Int(dataDict["Countdown"]! as! NSNumber) == 0 {
+            if Int(dataDict["Score1"]! as! NSNumber) > Int(dataDict["Score2"]! as! NSNumber) {
+                self.timesUp("Player1")
+            } else if Int(dataDict["Score2"]! as! NSNumber) > Int(dataDict["Score1"]! as! NSNumber) {
+                self.timesUp("Player2")
+            } else {
+                self.timesUp("Tie")
+            }
+        }
+    }
     
     
 //MARK: Timer Functions
     
-    //This function plays a notification sound and sets all necessary game info to variables before calling the segue to the FinalViewController
-    func timesUp() {
+    //This functions gets called when the time is up and determines which player is the winner
+    func timesUp(winner: String) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        if score1 > score2 {
-            winnerText = "Player 1"
-            scoreText = "\(score1) - \(score2)"
-        } else if score2 > score1 {
-            winnerText = "Player 2"
-            scoreText = "\(score2) - \(score1)"
-        } else {
-            winnerText = "Tie Game"
-            scoreText = "\(score1) - \(score2)"
+        if winner == "Player1" {
+            player1Score.textColor = UIColor.greenColor()
+            player2Score.textColor = UIColor.redColor()
+        } else if winner == "Player2" {
+            player2Score.textColor = UIColor.greenColor()
+            player1Score.textColor = UIColor.redColor()
+        } else if winner == "Tie" {
+            player1Score.textColor = UIColor.blueColor()
+            player2Score.textColor = UIColor.blueColor()
         }
     }
     

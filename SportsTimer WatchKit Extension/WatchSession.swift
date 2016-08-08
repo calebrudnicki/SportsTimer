@@ -35,7 +35,7 @@ class WatchSession: NSObject, WCSessionDelegate {
     func givePhoneScoreData(countdown: NSTimeInterval, score1: Int, score2: Int) {
         let payloadDictFromWatch = ["Countdown": countdown, "Score1": score1, "Score2": score2]
         let actionDictFromWatch = ["Action": "givePhoneScoreData", "Payload": payloadDictFromWatch]
-        session.sendMessage(actionDictFromWatch , replyHandler: nil) { (error: NSError) in
+        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
             print(error)
         }
     }

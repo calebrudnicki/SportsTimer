@@ -8,7 +8,7 @@
         <!--Scoreboard Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="ScoreboardInterfaceController" customModule="SportsTimer_WatchKit_Extension">
+                <controller identifier="Scoreboard Interface Controller" id="AgC-eL-Hgc" customClass="ScoreboardInterfaceController" customModule="SportsTimer_WatchKit_Extension">
                     <items>
                         <timer width="1" height="76.5" alignment="left" textAlignment="center" previewedSeconds="600" id="sGL-Lu-aeW">
                             <fontDescription key="font" type="system" pointSize="56"/>
@@ -27,11 +27,13 @@
                         <group width="1" height="55.5" alignment="left" id="hl7-yr-5yp">
                             <items>
                                 <button width="67" height="51.5" alignment="left" title="0" id="tqc-Bv-34b">
+                                    <fontDescription key="font" type="system" pointSize="25"/>
                                     <connections>
                                         <action selector="goalButton1" destination="AgC-eL-Hgc" id="bzc-Js-xdX"/>
                                     </connections>
                                 </button>
                                 <button width="59" height="51.5" alignment="right" title="0" id="8Nz-vZ-9Lx">
+                                    <fontDescription key="font" type="system" pointSize="25"/>
                                     <connections>
                                         <action selector="goalButton2" destination="AgC-eL-Hgc" id="RM7-7j-Fxb"/>
                                     </connections>
@@ -48,24 +50,24 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="334"/>
+            <point key="canvasLocation" x="553" y="334"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Home Interface Controller-->
         <scene sceneID="HoX-F1-L6b">
             <objects>
-                <controller id="3KW-jg-8WF">
+                <controller identifier="Home Interface Controller" id="3KW-jg-8WF" customClass="HomeInterfaceController" customModule="SportsTimer_WatchKit_Extension">
                     <items>
-                        <button width="1" alignment="center" verticalAlignment="center" title="Start Game" id="Zlo-kE-kx0">
+                        <button width="1" height="1" alignment="center" title="Start Game" id="Zlo-kE-kx0">
                             <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="45"/>
                             <connections>
-                                <action selector="startGameButtonTapped" destination="3KW-jg-8WF" id="Ro4-MY-DWA"/>
-                                <segue destination="AgC-eL-Hgc" kind="modal" id="MT1-dl-Oyi"/>
+                                <action selector="startGameButtonTapped" destination="3KW-jg-8WF" id="wrk-Lp-9hi"/>
                             </connections>
                         </button>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-67" y="334"/>
+            <point key="canvasLocation" x="235" y="334"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

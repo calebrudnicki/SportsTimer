@@ -27,7 +27,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     var score2 = 0
    
     
-//MARK: Setting Default Values and Starting a New Game
+//MARK: Boilerplate Functions
 
     //This functions calls for a new game and also sets the labels to their preset values
     override func awakeWithContext(context: AnyObject?) {
@@ -37,19 +37,19 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         player2Score.setTitle(String(score2))
     }
    
-    
-//MARK: Activating and Deactivating
-
     //This function creates and starts a session as long as it is supported
     override func willActivate() {
         super.willActivate()
         WatchSession.sharedInstance.startSession()
     }
 
+    //This function invalidates the backing timer when the end game button is tapped
     override func didDeactivate() {
         super.didDeactivate()
+        backingTimer?.invalidate()
     }
     
+    //This functions sets the back button's text
     override init () {
         super.init ()
         self.setTitle("End Game")
@@ -63,6 +63,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         let date = NSDate(timeIntervalSinceNow: countdown)
         timer.setDate(date)
         timer.start()
+        WatchSession.sharedInstance.tellPhoneToStartGame(countdown)
         //This is a one second timer that calls the secondTimerFired() function everytime it ends, then it repeats
         backingTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardInterfaceController.secondTimerFired), userInfo: nil, repeats: true)
     }
@@ -72,7 +73,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     //This function subtracts from the countdown variable every second when it is called and then calls the timesUp() function when countdown is less than 0
     func secondTimerFired() {
-        WatchSession.sharedInstance.givePhoneScoreData(countdown, score1: score1, score2: score2)
+        WatchSession.sharedInstance.givePhoneScoreData(score1, score2: score2)
         countdown -= 1
         if countdown < 0 {
             self.timesUp()

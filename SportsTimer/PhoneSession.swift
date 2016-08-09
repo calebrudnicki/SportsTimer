@@ -28,14 +28,20 @@ class PhoneSession: NSObject, WCSessionDelegate {
         }
     }
     
-    
 //MARK: Data Getters
     
-    func session(session: WCSession, didReceiveMessage actionDictFromWatch: [String : AnyObject]) {
+    //This function receives data from a sendMessage format
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         dispatch_async(dispatch_get_main_queue()) {
-        NSNotificationCenter.defaultCenter().postNotificationName(actionDictFromWatch["Action"]! as! String, object: actionDictFromWatch["Payload"])
+            NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
         }
     }
-
+    
+    //This function receives data from a transferUserInfo format
+    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            NSNotificationCenter.defaultCenter().postNotificationName(userInfo["Action"]! as! String, object: userInfo["Payload"])
+        }
+    }
     
 }

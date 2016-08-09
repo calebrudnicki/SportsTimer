@@ -21,7 +21,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Variables
     
-    var countdown: NSTimeInterval = 10
+    var countdown: NSTimeInterval = 30
     var backingTimer: NSTimer?
     var score1 = 0
     var score2 = 0
@@ -42,12 +42,6 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.willActivate()
         WatchSession.sharedInstance.startSession()
     }
-
-    //This function invalidates the backing timer when the end game button is tapped
-    override func didDeactivate() {
-        super.didDeactivate()
-        backingTimer?.invalidate()
-    }
     
     //This functions sets the back button's text
     override init () {
@@ -63,7 +57,6 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         let date = NSDate(timeIntervalSinceNow: countdown)
         timer.setDate(date)
         timer.start()
-        WatchSession.sharedInstance.tellPhoneToStartGame(countdown)
         //This is a one second timer that calls the secondTimerFired() function everytime it ends, then it repeats
         backingTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardInterfaceController.secondTimerFired), userInfo: nil, repeats: true)
     }
@@ -71,9 +64,9 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Timer Functions
     
-    //This function subtracts from the countdown variable every second when it is called and then calls the timesUp() function when countdown is less than 0
+    //This function calls a shared instance of givePhoneAllData() with the necessary variables before subtracting from the countdown variable every second when it is called and then calls the timesUp() function when countdown is less than 0
     func secondTimerFired() {
-        WatchSession.sharedInstance.givePhoneScoreData(score1, score2: score2)
+        WatchSession.sharedInstance.givePhoneAllData(countdown, score1: score1, score2: score2)
         countdown -= 1
         if countdown < 0 {
             self.timesUp()
@@ -85,19 +78,13 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         backingTimer?.invalidate()
         WKInterfaceDevice().playHaptic(.Failure)
         if score1 > score2 {
-            player1Score.setTitle("W")
             player1Score.setBackgroundColor(UIColor.greenColor())
-            player2Score.setTitle("L")
             player2Score.setBackgroundColor(UIColor.redColor())
         } else if score2 > score1 {
-            player2Score.setTitle("W")
             player2Score.setBackgroundColor(UIColor.greenColor())
-            player1Score.setTitle("L")
             player1Score.setBackgroundColor(UIColor.redColor())
         } else {
-            player1Score.setTitle("T")
             player1Score.setBackgroundColor(UIColor.blueColor())
-            player2Score.setTitle("T")
             player2Score.setBackgroundColor(UIColor.blueColor())
         }
         player1Score.setEnabled(false)

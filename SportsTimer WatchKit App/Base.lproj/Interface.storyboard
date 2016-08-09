@@ -11,14 +11,17 @@
                 <controller identifier="Scoreboard Interface Controller" id="AgC-eL-Hgc" customClass="ScoreboardInterfaceController" customModule="SportsTimer_WatchKit_Extension">
                     <items>
                         <timer width="1" height="76.5" alignment="left" textAlignment="center" previewedSeconds="600" id="sGL-Lu-aeW">
-                            <fontDescription key="font" type="system" pointSize="56"/>
+                            <fontDescription key="font" type="system" pointSize="55"/>
                             <calendarUnit key="units" minute="YES" second="YES"/>
                         </timer>
                         <separator alignment="left" id="TSF-1R-qY4"/>
                         <group width="1" alignment="left" spacing="5" id="IO1-14-nL3">
                             <items>
-                                <label alignment="right" text="Player 2" id="Bf5-i6-tPh"/>
+                                <label alignment="right" text="Player 2" id="Bf5-i6-tPh">
+                                    <fontDescription key="font" type="system" weight="ultraLight" pointSize="18"/>
+                                </label>
                                 <label alignment="left" text="Player 1" id="hzh-yl-PR1">
+                                    <fontDescription key="font" type="system" weight="ultraLight" pointSize="18"/>
                                     <variation key="device=watch42mm" textAlignment="natural"/>
                                 </label>
                             </items>
@@ -27,13 +30,13 @@
                         <group width="1" height="55.5" alignment="left" id="hl7-yr-5yp">
                             <items>
                                 <button width="67" height="51.5" alignment="left" title="0" id="tqc-Bv-34b">
-                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                    <fontDescription key="font" type="system" pointSize="30"/>
                                     <connections>
                                         <action selector="goalButton1" destination="AgC-eL-Hgc" id="bzc-Js-xdX"/>
                                     </connections>
                                 </button>
                                 <button width="59" height="51.5" alignment="right" title="0" id="8Nz-vZ-9Lx">
-                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                    <fontDescription key="font" type="system" pointSize="30"/>
                                     <connections>
                                         <action selector="goalButton2" destination="AgC-eL-Hgc" id="RM7-7j-Fxb"/>
                                     </connections>

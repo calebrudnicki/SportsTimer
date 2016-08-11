@@ -17,7 +17,7 @@ class HomeInterfaceController: WKInterfaceController {
         super.awakeWithContext(context)
     }
 
-    //This functions makes a shared instance of watch session
+    //This functions makes a shared instance of watch session and calls startSession() and tellPhoneToStopGame() every time the view activates
     override func willActivate() {
         super.willActivate()
         WatchSession.sharedInstance.startSession()

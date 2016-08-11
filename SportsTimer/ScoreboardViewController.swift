@@ -20,7 +20,7 @@ class ScoreboardViewController: UIViewController {
     
 //MARK: Boilerplate Functions
     
-    //This function creates an instance of a shared session and establishes this class as an observer of the tellPhoneToStopGame, givePhoneScoreData, and tellPhoneToStartGame notifications
+    //This function creates an instance of a shared session and establishes this class as an observer of the tellPhoneToStopGameand givePhoneAllData notifications
     override func viewDidLoad() {
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
@@ -40,15 +40,16 @@ class ScoreboardViewController: UIViewController {
 
 //MARK: Watch Communication Functions
     
-    //This function that gets called everytime the tellPhoneToStopGame notification is posted invalidates the timer and resets all of the labels
+    //This function that gets called everytime the tellPhoneToStopGame notification is posted resets all of the labels
     func receivedTellPhoneToStopGameNotification(notification: NSNotification) {
-        timerLabel.text = "00:00"
+        timerLabel.text = "10:00"
         player1ScoreLabel.text = "0"
         player2ScoreLabel.text = "0"
         player1ScoreLabel.textColor = UIColor.whiteColor()
         player2ScoreLabel.textColor = UIColor.whiteColor()
     }
 
+    //This function that gets called everytime the givePhoneAllData notification is posted calls displayLabels()
     func receivedGivePhoneAllDataNotification(notification: NSNotification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.displayLabels(dataDict!)
@@ -57,6 +58,7 @@ class ScoreboardViewController: UIViewController {
     
 //MARK: Label Functions
 
+    //This function changes the labels to the most up to date data before it checks to see whether or not the time has run out
     func displayLabels(dataDict: [String : AnyObject]) {
         let time = Int(String(dataDict["Time"]!))
         timerLabel.text = self.convertSeconds(time!)

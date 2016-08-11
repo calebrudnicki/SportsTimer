@@ -105,6 +105,7 @@
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "Artboard 4@2x.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -122,10 +123,6 @@
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"
-    },
-    {
-      "filename" : "Icon-App-76x76@3x.png",
-      "unassigned" : true
     }
   ],
   "info" : {

@@ -139,6 +139,7 @@
 		8235D4471D5A14A300E6CC88 /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
 		8235D4481D5A14A300E6CC88 /* System San Francisco Display Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Thin.ttf"; sourceTree = "<group>"; };
 		8235D4491D5A14A300E6CC88 /* System San Francisco Display Ultralight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Ultralight.ttf"; sourceTree = "<group>"; };
+		8235D4651D5BC2A900E6CC88 /* SportsTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SportsTimer.entitlements; sourceTree = "<group>"; };
 		824435321D2D6FA200383452 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
 		8284C9821D2EE70600A08EEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +185,7 @@
 		822191DF1D1C2AA500309328 /* SportsTimer */ = {
 			isa = PBXGroup;
 			children = (
+				8235D4651D5BC2A900E6CC88 /* SportsTimer.entitlements */,
 				8235D4301D5A146400E6CC88 /* Resources */,
 				822191E01D1C2AA500309328 /* AppDelegate.swift */,
 				822B6E0B1D57AA0A002566AA /* PhoneSession.swift */,
@@ -330,8 +332,11 @@
 				TargetAttributes = {
 					822191DC1D1C2AA500309328 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = FNL2LKL956;
+						DevelopmentTeam = 92DETN2MKQ;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -339,11 +344,11 @@
 					};
 					822191EE1D1C2AA600309328 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = FNL2LKL956;
+						DevelopmentTeam = 92DETN2MKQ;
 					};
 					822191FD1D1C2AA600309328 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = FNL2LKL956;
+						DevelopmentTeam = 92DETN2MKQ;
 					};
 				};
 			};
@@ -499,6 +504,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -544,7 +550,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -567,9 +574,10 @@
 		822192131D1C2AA600309328 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = "SportsTimer WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -581,9 +589,11 @@
 		822192141D1C2AA600309328 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = "SportsTimer WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -596,10 +606,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = SportsTimer_WatchKit_Extension;
 				INFOPLIST_FILE = "SportsTimer WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -612,10 +623,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = SportsTimer_WatchKit_Extension;
 				INFOPLIST_FILE = "SportsTimer WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -628,10 +641,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsTimer/SportsTimer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Caleb Rudnicki (TXLNEYLJ66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SportsTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8f7d33a8-c935-44ba-bd6b-539ee1e96bee";
 			};
 			name = Debug;
 		};
@@ -639,10 +656,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsTimer/SportsTimer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Caleb Rudnicki (TXLNEYLJ66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SportsTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SportsTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8f7d33a8-c935-44ba-bd6b-539ee1e96bee";
 			};
 			name = Release;
 		};

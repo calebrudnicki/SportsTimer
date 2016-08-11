@@ -5,6 +5,8 @@
 //  Created by Caleb Rudnicki on 6/23/16.
 //  Copyright © 2016 Caleb Rudnicki. All rights reserved.
 //
+//  App icon adapted from a creation by Valentina Velcro at https://thenounproject.com/search/?q=field+goal&i=77655
+//
 
 import WatchKit
 import Foundation
@@ -21,7 +23,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
 //MARK: Variables
     
-    var countdown: NSTimeInterval = 30
+    var countdown: NSTimeInterval = 600
     var backingTimer: NSTimer?
     var score1 = 0
     var score2 = 0
@@ -37,10 +39,15 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         player2Score.setTitle(String(score2))
     }
    
-    //This function creates and starts a session as long as it is supported
+    //This function calls startSession() as a shared instance of WatchSession
     override func willActivate() {
         super.willActivate()
         WatchSession.sharedInstance.startSession()
+    }
+    
+    //This functions invalidates the timer when the end game button is tapped
+    override func willDisappear() {
+        backingTimer?.invalidate()
     }
     
     //This functions sets the back button's text

@@ -10,7 +10,7 @@ import UIKit
 import WatchConnectivity
 
 class PhoneSession: NSObject, WCSessionDelegate {
-
+    
 //MARK: Variables
     
     static let sharedInstance = PhoneSession()
@@ -28,20 +28,15 @@ class PhoneSession: NSObject, WCSessionDelegate {
         }
     }
     
+    
 //MARK: Data Getters
     
-    //This function receives data from a sendMessage format
+    //This functions receives a message from the Watch
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         dispatch_async(dispatch_get_main_queue()) {
             NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
         }
     }
     
-    //This function receives data from a transferUserInfo format
-    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
-        dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName(userInfo["Action"]! as! String, object: userInfo["Payload"])
-        }
-    }
     
 }

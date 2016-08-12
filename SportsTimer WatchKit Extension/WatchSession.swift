@@ -10,7 +10,7 @@ import WatchKit
 import WatchConnectivity
 
 class WatchSession: NSObject, WCSessionDelegate {
-
+    
 //MARK: Variables
     
     static let sharedInstance = WatchSession()
@@ -39,18 +39,23 @@ class WatchSession: NSObject, WCSessionDelegate {
         }
     }
     
-    //This functions either transfers or sends a message to PhoneSession with the key givePhoneAllData depending on whether the watch face is on or off
-    func givePhoneAllData(time: NSTimeInterval, score1: Int, score2: Int) {
-        let payloadDictFromWatch = ["Time": time, "Score1": score1, "Score2": score2]
-        let actionDictFromWatch = ["Action": "givePhoneAllData", "Payload": payloadDictFromWatch]
-        if session.activationState == .Activated {
-            session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
-                print(error)
-            }
-        } else {
-            session.transferUserInfo(actionDictFromWatch)
+    //This function sends a message to PhoneSession with a dictionary containing a startRunToPhone value
+    func givePhoneScoreData(score1: Int, score2: Int) {
+        let payloadDictFromWatch = ["Score1": score1, "Score2": score2]
+        let actionDictFromWatch = ["Action": "givePhoneScoreData", "Payload": payloadDictFromWatch]
+        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
+            print(error)
         }
-
     }
+    
+    //This function sends a message to PhoneSession with a dictionary containing a tellPhoneToStartGame value
+    func tellPhoneToStartGame(time: NSTimeInterval) {
+        let payloadDictFromWatch = ["Time": time]
+        let actionDictFromWatch = ["Action": "tellPhoneToStartGame", "Payload": payloadDictFromWatch]
+        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
+            print(error)
+        }
+    }
+    
     
 }

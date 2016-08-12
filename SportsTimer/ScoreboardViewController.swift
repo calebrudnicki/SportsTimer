@@ -10,24 +10,33 @@ import UIKit
 import AudioToolbox
 
 class ScoreboardViewController: UIViewController {
-
+    
 //MARK: Outlets
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var player1ScoreLabel: UILabel!
     @IBOutlet weak var player2ScoreLabel: UILabel!
-
+    
+    
+//MARK: Variables
+    
+    var timer: NSTimer!
+    var totalTime: Int!
+    var player1Score: Int! = 0
+    var player2Score: Int! = 0
+    
     
 //MARK: Boilerplate Functions
     
-    //This function creates an instance of a shared session and establishes this class as an observer of the tellPhoneToStopGameand givePhoneAllData notifications
+    //This function creates an instance of a shared session and establishes this class as an observer of the tellPhoneToStopGame, givePhoneScoreData, and tellPhoneToStartGame notifications
     override func viewDidLoad() {
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStopGameNotification(_:)), name:"tellPhoneToStopGame", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedGivePhoneAllDataNotification(_:)), name:"givePhoneAllData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedGivePhoneScoreDataNotification(_:)), name:"givePhoneScoreData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStartGameNotification(_:)), name:"tellPhoneToStartGame", object: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -36,47 +45,72 @@ class ScoreboardViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-  
-
+    
+    
 //MARK: Watch Communication Functions
     
     //This function that gets called everytime the tellPhoneToStopGame notification is posted resets all of the labels
     func receivedTellPhoneToStopGameNotification(notification: NSNotification) {
+        timer.invalidate()
         timerLabel.text = "10:00"
         player1ScoreLabel.text = "0"
         player2ScoreLabel.text = "0"
         player1ScoreLabel.textColor = UIColor.whiteColor()
         player2ScoreLabel.textColor = UIColor.whiteColor()
     }
-
-    //This function that gets called everytime the givePhoneAllData notification is posted calls displayLabels()
-    func receivedGivePhoneAllDataNotification(notification: NSNotification) {
+    
+    //This function that gets called everytime a givePhoneScoreData notification is posted calls displayLabels()
+    func receivedGivePhoneScoreDataNotification(notification: NSNotification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.displayLabels(dataDict!)
     }
     
+    //This function that gets called everytime a tellPhoneToStartGame notification is posted calls startTimer()
+    func receivedTellPhoneToStartGameNotification(notification: NSNotification) {
+        let dataDict = notification.object as? [String : AnyObject]
+        self.startTimer(dataDict!)
+    }
+    
     
 //MARK: Label Functions
-
-    //This function changes the labels to the most up to date data before it checks to see whether or not the time has run out
+    
+    //This functions updates the score labels to match the watch's data
     func displayLabels(dataDict: [String : AnyObject]) {
-        let time = Int(String(dataDict["Time"]!))
-        timerLabel.text = self.convertSeconds(time!)
         player1ScoreLabel.text = String(dataDict["Score1"]!)
         player2ScoreLabel.text = String(dataDict["Score2"]!)
-        if time == 0 {
-            if Int(String(dataDict["Score1"]!)) > Int(String(dataDict["Score2"]!)) {
+        player1Score = Int(String(dataDict["Score1"]!))
+        player2Score = Int(String(dataDict["Score2"]!))
+    }
+    
+    //This functions runs once per second until the totalTime variable reaches 0 before it calls timesUp() with the winning player as a parameter
+    func eachSecond(timer: NSTimer) {
+        if totalTime >= 0 {
+            timerLabel.text = self.convertSeconds(totalTime)
+        } else {
+            timer.invalidate()
+        }
+        if totalTime == 0 {
+            if self.player1Score > self.player2Score {
                 self.timesUp("Player1")
-            } else if Int(String(dataDict["Score2"]!)) > Int(String(dataDict["Score1"]!)) {
+            } else if self.player2Score > self.player1Score {
                 self.timesUp("Player2")
             } else {
                 self.timesUp("Tie")
             }
         }
+        totalTime = totalTime - 1
     }
     
-
+    
 //MARK: Timer Functions
+    
+    //This functions sets totalTime to the amount of starting time on the watch and then creates a timer that calls eachSecond()
+    func startTimer(dataDict: [String : AnyObject]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.totalTime = Int(String(dataDict["Time"]!))!
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
+        }
+    }
     
     //This functions gets called when the time is up and determines which player is the winner
     func timesUp(winner: String) {
@@ -98,7 +132,7 @@ class ScoreboardViewController: UIViewController {
         let secs: Double! = Double(seconds)
         let minutePlace = Int(floor(secs / 60) % 60)
         let secondPlace = Int(floor(secs) % 60)
-        return String(format: "%2d:%02d", minutePlace, secondPlace)
+        return String(format: "%02d:%02d", minutePlace, secondPlace)
     }
-
+    
 }

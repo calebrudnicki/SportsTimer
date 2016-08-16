@@ -60,7 +60,7 @@
             <objects>
                 <controller identifier="Home Interface Controller" id="3KW-jg-8WF" customClass="HomeInterfaceController" customModule="SportsTimer_WatchKit_Extension">
                     <items>
-                        <button width="1" height="1" alignment="center" title="Start Game" id="Zlo-kE-kx0">
+                        <button width="1" height="1" alignment="center" verticalAlignment="center" title="Start" id="Zlo-kE-kx0">
                             <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" type="system" pointSize="45"/>
                             <connections>

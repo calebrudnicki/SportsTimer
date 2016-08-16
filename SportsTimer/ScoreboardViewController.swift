@@ -24,6 +24,8 @@ class ScoreboardViewController: UIViewController {
     var totalTime: Int!
     var player1Score: Int! = 0
     var player2Score: Int! = 0
+    var updatedWatchTimer: Int!
+    var timerIsOn: Bool = false
     
     
 //MARK: Boilerplate Functions
@@ -35,6 +37,7 @@ class ScoreboardViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStopGameNotification(_:)), name:"tellPhoneToStopGame", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedGivePhoneScoreDataNotification(_:)), name:"givePhoneScoreData", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStartGameNotification(_:)), name:"tellPhoneToStartGame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneTheTimeNotification(_:)), name:"tellPhoneTheTime", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,12 +54,18 @@ class ScoreboardViewController: UIViewController {
     
     //This function that gets called everytime the tellPhoneToStopGame notification is posted resets all of the labels
     func receivedTellPhoneToStopGameNotification(notification: NSNotification) {
+        timerIsOn = false
         timer.invalidate()
         timerLabel.text = "10:00"
         player1ScoreLabel.text = "0"
         player2ScoreLabel.text = "0"
         player1ScoreLabel.textColor = UIColor.whiteColor()
         player2ScoreLabel.textColor = UIColor.whiteColor()
+    }
+    
+    func receivedTellPhoneTheTimeNotification(notification: NSNotification) {
+        let dataDict = notification.object as? [String : AnyObject]
+        self.updateWatchTimer(dataDict!)
     }
     
     //This function that gets called everytime a givePhoneScoreData notification is posted calls displayLabels()
@@ -101,14 +110,21 @@ class ScoreboardViewController: UIViewController {
         totalTime = totalTime - 1
     }
     
+    func updateWatchTimer(dataDict: [String : AnyObject]) {
+        updatedWatchTimer = Int(String(dataDict["Time"]!))
+    }
+    
     
 //MARK: Timer Functions
     
     //This functions sets totalTime to the amount of starting time on the watch and then creates a timer that calls eachSecond()
     func startTimer(dataDict: [String : AnyObject]) {
         dispatch_async(dispatch_get_main_queue()) {
-            self.totalTime = Int(String(dataDict["Time"]!))!
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
+            if self.timerIsOn == false {
+                self.totalTime = Int(String(dataDict["Time"]!))!
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
+            }
+            self.timerIsOn = true
         }
     }
     

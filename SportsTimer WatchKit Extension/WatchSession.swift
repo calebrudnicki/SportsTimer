@@ -58,4 +58,12 @@ class WatchSession: NSObject, WCSessionDelegate {
     }
     
     
+//MARK: Data Getters
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
+        }
+    }
+    
 }

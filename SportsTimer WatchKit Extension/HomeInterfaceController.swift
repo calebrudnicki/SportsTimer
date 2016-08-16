@@ -34,5 +34,5 @@ class HomeInterfaceController: WKInterfaceController {
     @IBAction func startGameButtonTapped() {
         self.presentControllerWithName("Scoreboard Interface Controller", context: nil)
     }
-    
+
 }

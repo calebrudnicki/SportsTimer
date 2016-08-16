@@ -28,7 +28,7 @@ class PhoneSession: NSObject, WCSessionDelegate {
         }
     }
     
-    
+
 //MARK: Data Getters
     
     //This functions receives a message from the Watch
@@ -37,6 +37,5 @@ class PhoneSession: NSObject, WCSessionDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
         }
     }
-    
     
 }

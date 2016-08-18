@@ -14,8 +14,11 @@ class ScoreboardViewController: UIViewController {
 //MARK: Outlets
     
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var player1TitleLabel: UILabel!
+    @IBOutlet weak var player2TitleLabel: UILabel!
     @IBOutlet weak var player1ScoreLabel: UILabel!
     @IBOutlet weak var player2ScoreLabel: UILabel!
+    @IBOutlet weak var switchButton: UISwitch!
     
     
 //MARK: Variables
@@ -26,11 +29,12 @@ class ScoreboardViewController: UIViewController {
     var player2Score: Int! = 0
     var updatedWatchTimer: Int!
     var timerIsOn: Bool = false
+    var canScoreFromPhone = true
     
     
 //MARK: Boilerplate Functions
     
-    //This function creates an instance of a shared session and establishes this class as an observer of the tellPhoneToStopGame, givePhoneScoreData, and tellPhoneToStartGame notifications
+    //This function creates an instance of a shared session, establishes this class as an observer of the tellPhoneToStopGame, givePhoneScoreData, and tellPhoneToStartGame notifications, and calls addSwipe()
     override func viewDidLoad() {
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
@@ -38,6 +42,7 @@ class ScoreboardViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedGivePhoneScoreDataNotification(_:)), name:"givePhoneScoreData", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStartGameNotification(_:)), name:"tellPhoneToStartGame", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneTheTimeNotification(_:)), name:"tellPhoneTheTime", object: nil)
+        self.addSwipe()
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,6 +52,31 @@ class ScoreboardViewController: UIViewController {
     //This function removes the observer when the view disappears
     override func viewDidDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+
+//MARK: Layout Functions
+    
+    //This functions formats the screen for the switch button being on
+    func switchButtonOn() {
+        canScoreFromPhone = true
+        view.backgroundColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        timerLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player1TitleLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player2TitleLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player1ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player2ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+    }
+    
+    //This functions formats the screen for the switch button being off
+    func switchButtonOff() {
+        canScoreFromPhone = false
+        view.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        timerLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player1TitleLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player2TitleLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player1ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player2ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
     }
     
     
@@ -63,6 +93,7 @@ class ScoreboardViewController: UIViewController {
         player2ScoreLabel.textColor = UIColor.whiteColor()
     }
     
+    //This functions that gets called everytime a tellPhoneTheTime notification is posted calls updateWatchTimer()
     func receivedTellPhoneTheTimeNotification(notification: NSNotification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.updateWatchTimer(dataDict!)
@@ -78,6 +109,46 @@ class ScoreboardViewController: UIViewController {
     func receivedTellPhoneToStartGameNotification(notification: NSNotification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.startTimer(dataDict!)
+    }
+    
+    
+//MARK: Actions
+    
+    //This function changes the score center when the switch is tapped
+    @IBAction func switchButtonTapped(sender: AnyObject) {
+        if switchButton.on {
+            switchButtonOn()
+        } else {
+            switchButtonOff()
+        }
+    }
+    
+
+//MARK: Swipe Functions
+    
+    //This funtions creates the swipe right and the swipe left gestures and then calls addGestureRecognizer()
+    func addSwipe() {
+        let directions: [UISwipeGestureRecognizerDirection] = [.Right, .Left, .Down]
+        for direction in directions {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ScoreboardViewController.handleSwipe(_:)))
+            gesture.direction = direction
+            self.view.addGestureRecognizer(gesture)
+        }
+    }
+    
+    //This functions prints the direction of the swipe only if canScoreFromPhone is set to true
+    func handleSwipe(sender: UISwipeGestureRecognizer) {
+        if sender.direction.rawValue == 1 && canScoreFromPhone == true {
+            player1Score = player1Score + 1
+            print("right")
+            player1ScoreLabel.text = String(player1Score)
+        } else if sender.direction.rawValue == 2 && canScoreFromPhone == true {
+            player2Score = player2Score + 1
+            print("left")
+            player2ScoreLabel.text = String(player2Score)
+        } else if sender.direction.rawValue == 8 && canScoreFromPhone == true {
+            print("down")
+        }
     }
     
     

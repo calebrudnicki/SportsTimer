@@ -24,7 +24,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-bn-hDm">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="200"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="TR2-8B-rz3">
@@ -42,7 +42,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bx-e8-vUl">
                                                         <rect key="frame" x="0.0" y="68" width="245" height="59"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -56,13 +56,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="751" misplaced="YES" text="Player 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ar-o9-RtG">
                                                         <rect key="frame" x="0.0" y="0.0" width="245" height="58"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7r-Lp-hcO">
                                                         <rect key="frame" x="0.0" y="68" width="245" height="59"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -83,16 +83,24 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7T-rI-v0b">
+                                <rect key="frame" x="541" y="559" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchButtonTapped:" destination="1Jk-Jm-xvm" eventType="valueChanged" id="WdB-Wq-nKf"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="leading" secondItem="XMY-gn-H0f" secondAttribute="leading" constant="100" id="8GV-U9-sHX"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="width" secondItem="XMY-gn-H0f" secondAttribute="width" id="I7k-72-XbJ"/>
+                            <constraint firstItem="IJg-fn-8bx" firstAttribute="top" secondItem="I7T-rI-v0b" secondAttribute="bottom" constant="10" id="JP7-bO-fFG"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="O7E-hm-0Oc"/>
                             <constraint firstAttribute="trailing" secondItem="pC3-52-CuB" secondAttribute="trailing" constant="100" id="OqG-Zn-sel"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="PJN-zL-sQg"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" constant="100" id="bkd-DP-WU4"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="height" secondItem="XMY-gn-H0f" secondAttribute="height" id="dUJ-td-4vb"/>
+                            <constraint firstAttribute="trailing" secondItem="I7T-rI-v0b" secondAttribute="trailing" constant="10" id="mcR-Dx-eLT"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -105,7 +113,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="player1ScoreLabel" destination="4Bx-e8-vUl" id="WYU-fS-fk9"/>
+                        <outlet property="player1TitleLabel" destination="OL8-ZT-5dJ" id="L2C-0a-Yd6"/>
                         <outlet property="player2ScoreLabel" destination="r7r-Lp-hcO" id="XeD-bt-dSg"/>
+                        <outlet property="player2TitleLabel" destination="8Ar-o9-RtG" id="Uft-J2-4Do"/>
+                        <outlet property="switchButton" destination="I7T-rI-v0b" id="hRb-GJ-QGC"/>
                         <outlet property="timerLabel" destination="hf8-bn-hDm" id="QXA-PC-myq"/>
                     </connections>
                 </viewController>

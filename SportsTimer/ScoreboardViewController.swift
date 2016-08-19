@@ -127,15 +127,15 @@ class ScoreboardViewController: UIViewController {
     
     //This functions handles each swipe and its functionality within the app
     func handleSwipe(sender: UISwipeGestureRecognizer) {
-        if sender.direction.rawValue == 1 && canScoreFromPhone == true {
+        if sender.direction.rawValue == 1 && canScoreFromPhone == true && timerIsOn == true {
             player1Score = player1Score + 1
             player1ScoreLabel.text = String(player1Score)
-        } else if sender.direction.rawValue == 2 && canScoreFromPhone == true {
+        } else if sender.direction.rawValue == 2 && canScoreFromPhone == true  && timerIsOn == true {
             player2Score = player2Score + 1
             player2ScoreLabel.text = String(player2Score)
-        } else if sender.direction.rawValue == 8 && canScoreFromPhone == true {
+        } else if sender.direction.rawValue == 8 && canScoreFromPhone == true && timerIsOn == false {
             self.beginClock()
-        } else if sender.direction.rawValue == 4 && canScoreFromPhone == true {
+        } else if sender.direction.rawValue == 4 && canScoreFromPhone == true && timerIsOn == true {
             self.restartGame()
         }
     }
@@ -192,13 +192,13 @@ class ScoreboardViewController: UIViewController {
                 self.totalTime = Int(String(dataDict["Time"]!))!
                 self.beginClock()
             }
-            self.timerIsOn = true
         }
     }
     
     //This function starts the clock
     func beginClock() {
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
+        self.timerIsOn = true
     }
     
     //This functions gets called when the time is up and determines which player is the winner

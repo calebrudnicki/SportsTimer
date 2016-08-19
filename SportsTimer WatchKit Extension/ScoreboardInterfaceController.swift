@@ -78,7 +78,6 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     //This function subtracts from the countdown variable every second when it is called and then calls the timesUp() function when countdown is less than 0
     func secondTimerFired() {
-        //WatchSession.sharedInstance.givePhoneScoreData(score1, score2: score2)
         countdown -= 1
         if countdown < 0 {
             self.timesUp()
@@ -116,14 +115,14 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBAction func goalButton1() {
         score1 = score1 + 1
         player1Score.setTitle(String(score1))
-        WatchSession.sharedInstance.givePhoneScoreData(score1, score2: score2)
+        WatchSession.sharedInstance.tellPhoneScoreData(score1, score2: score2)
     }
     
     //This functions adds a goal to Player 2's score and sends that info to the phone
     @IBAction func goalButton2() {
         score2 = score2 + 1
         player2Score.setTitle(String(score2))
-        WatchSession.sharedInstance.givePhoneScoreData(score1, score2: score2)
+        WatchSession.sharedInstance.tellPhoneScoreData(score1, score2: score2)
     }
     
 }

@@ -31,19 +31,18 @@ class WatchSession: NSObject, WCSessionDelegate {
     
 //MARK: Data Senders
     
-    //This function sends a message to PhoneSession with the key tellPhoneToStopGame
-    func tellPhoneToStopGame() {
-        let actionDictFromWatch = ["Action": "tellPhoneToStopGame"]
+    //This function sends a message to PhoneSession with the key tellPhoneToBeTheController
+    func tellPhoneToBeTheController() {
+        let actionDictFromWatch = ["Action": "tellPhoneToBeTheController"]
         session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
             print(error)
         }
     }
     
-    //This function sends a message to PhoneSession with a dictionary containing a startRunToPhone value
-    func givePhoneScoreData(score1: Int, score2: Int) {
-        let payloadDictFromWatch = ["Score1": score1, "Score2": score2]
-        let actionDictFromWatch = ["Action": "givePhoneScoreData", "Payload": payloadDictFromWatch]
-        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
+    //This function sends a message to PhoneSession with the key tellPhoneToBeTheScoreboard
+    func tellPhoneToBeTheScoreboard() {
+        let actionDictFromWatch = ["Action": "tellPhoneToBeTheScoreboard"]
+        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
             print(error)
         }
     }
@@ -57,9 +56,27 @@ class WatchSession: NSObject, WCSessionDelegate {
         }
     }
     
+    //This function sends a message to PhoneSession with the key tellPhoneToStopGame
+    func tellPhoneToStopGame() {
+        let actionDictFromWatch = ["Action": "tellPhoneToStopGame"]
+        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
+            print(error)
+        }
+    }
+    
+    //This function sends a message to PhoneSession with a dictionary containing a startRunToPhone value
+    func tellPhoneScoreData(score1: Int, score2: Int) {
+        let payloadDictFromWatch = ["Score1": score1, "Score2": score2]
+        let actionDictFromWatch = ["Action": "tellPhoneScoreData", "Payload": payloadDictFromWatch]
+        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
+            print(error)
+        }
+    }
+    
     
 //MARK: Data Getters
     
+    //This functions receives a message from the Watch
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         dispatch_async(dispatch_get_main_queue()) {
             NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])

@@ -21,6 +21,7 @@ class HomeInterfaceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
         WatchSession.sharedInstance.startSession()
+        WatchSession.sharedInstance.tellPhoneToBeTheController()
     }
     
     override func didDeactivate() {
@@ -32,6 +33,7 @@ class HomeInterfaceController: WKInterfaceController {
     
     //This function segues to the ScoreboardInterfaceController when the start run button is tapped
     @IBAction func startGameButtonTapped() {
+        WatchSession.sharedInstance.tellPhoneToBeTheScoreboard()
         self.presentControllerWithName("Scoreboard Interface Controller", context: nil)
     }
 

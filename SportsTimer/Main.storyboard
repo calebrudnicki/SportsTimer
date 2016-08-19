@@ -83,24 +83,16 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7T-rI-v0b">
-                                <rect key="frame" x="541" y="559" width="51" height="31"/>
-                                <connections>
-                                    <action selector="switchButtonTapped:" destination="1Jk-Jm-xvm" eventType="valueChanged" id="WdB-Wq-nKf"/>
-                                </connections>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="leading" secondItem="XMY-gn-H0f" secondAttribute="leading" constant="100" id="8GV-U9-sHX"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="width" secondItem="XMY-gn-H0f" secondAttribute="width" id="I7k-72-XbJ"/>
-                            <constraint firstItem="IJg-fn-8bx" firstAttribute="top" secondItem="I7T-rI-v0b" secondAttribute="bottom" constant="10" id="JP7-bO-fFG"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="O7E-hm-0Oc"/>
                             <constraint firstAttribute="trailing" secondItem="pC3-52-CuB" secondAttribute="trailing" constant="100" id="OqG-Zn-sel"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="PJN-zL-sQg"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" constant="100" id="bkd-DP-WU4"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="height" secondItem="XMY-gn-H0f" secondAttribute="height" id="dUJ-td-4vb"/>
-                            <constraint firstAttribute="trailing" secondItem="I7T-rI-v0b" secondAttribute="trailing" constant="10" id="mcR-Dx-eLT"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -116,7 +108,6 @@
                         <outlet property="player1TitleLabel" destination="OL8-ZT-5dJ" id="L2C-0a-Yd6"/>
                         <outlet property="player2ScoreLabel" destination="r7r-Lp-hcO" id="XeD-bt-dSg"/>
                         <outlet property="player2TitleLabel" destination="8Ar-o9-RtG" id="Uft-J2-4Do"/>
-                        <outlet property="switchButton" destination="I7T-rI-v0b" id="hRb-GJ-QGC"/>
                         <outlet property="timerLabel" destination="hf8-bn-hDm" id="QXA-PC-myq"/>
                     </connections>
                 </viewController>

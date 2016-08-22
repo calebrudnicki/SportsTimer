@@ -20,6 +20,7 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var player2ScoreLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     
+    @IBOutlet weak var testStack: UIStackView!
     
 //MARK: Variables
     
@@ -36,6 +37,7 @@ class ScoreboardViewController: UIViewController {
     
     //This function creates an instance of a shared session, establishes this class as an observer of the tellPhoneToBeTheScoreboard, tellPhoneToBeTheController, tellPhoneToStartGame, tellPhoneToStopGame, tellPhoneScoreData, and tellPhoneTheTime notifications, and calls addSwipe()
     override func viewDidLoad() {
+        print("loaded")
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheControllerNotification(_:)), name:"tellPhoneToBeTheController", object: nil)
@@ -60,6 +62,7 @@ class ScoreboardViewController: UIViewController {
     
     //This function formats the screen to show that it is active
     func activatePhone() {
+        print("here")
         canScoreFromPhone = true
         self.restartGame()
         view.backgroundColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
@@ -68,10 +71,12 @@ class ScoreboardViewController: UIViewController {
         player2TitleLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         player1ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         player2ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        self.layoutWithTutorial()
     }
     
     //This function formats the screen to show that it is inactive
     func deactivatePhone() {
+        print("here")
         canScoreFromPhone = false
         self.restartGame()
         view.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
@@ -80,6 +85,27 @@ class ScoreboardViewController: UIViewController {
         player2TitleLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         player1ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         player2ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        self.layoutWithoutTutorial()
+    }
+    
+    //This function changes the layout of the labels when the tutorial is on
+    func layoutWithTutorial() {
+        testStack.hidden = false
+        timerLabel.alpha = 0.25
+        player1TitleLabel.alpha = 0.25
+        player2TitleLabel.alpha = 0.25
+        player1ScoreLabel.alpha = 0.25
+        player2ScoreLabel.alpha = 0.25
+    }
+    
+    //This function changes the layout of the labels when the tutorial is off
+    func layoutWithoutTutorial() {
+        testStack.hidden = true
+        timerLabel.alpha = 1
+        player1TitleLabel.alpha = 1
+        player2TitleLabel.alpha = 1
+        player1ScoreLabel.alpha = 1
+        player2ScoreLabel.alpha = 1
     }
     
     
@@ -134,9 +160,12 @@ class ScoreboardViewController: UIViewController {
             player2Score = player2Score + 1
             player2ScoreLabel.text = String(player2Score)
         } else if sender.direction.rawValue == 8 && canScoreFromPhone == true && timerIsOn == false {
+            print("Swiped down")
             self.beginClock()
+            self.layoutWithoutTutorial()
         } else if sender.direction.rawValue == 4 && canScoreFromPhone == true && timerIsOn == true {
             self.restartGame()
+            self.layoutWithTutorial()
         }
     }
     
@@ -146,7 +175,9 @@ class ScoreboardViewController: UIViewController {
     //This function restarts a game by resetting labels and variables while also invalidating the timer
     func restartGame() {
         timerIsOn = false
-        timer.invalidate()
+        if timer != nil {
+           timer.invalidate()
+        }
         totalTime = 600
         timerLabel.text = "10:00"
         player1Score = 0

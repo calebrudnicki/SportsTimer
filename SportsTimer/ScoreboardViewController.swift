@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import AVFoundation
 
 class ScoreboardViewController: UIViewController {
     
@@ -19,11 +20,11 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var player1ScoreLabel: UILabel!
     @IBOutlet weak var player2ScoreLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
-    
-    @IBOutlet weak var testStack: UIStackView!
+    @IBOutlet weak var tutorialStack: UIStackView!
     
 //MARK: Variables
     
+    let speechSynthesizer = AVSpeechSynthesizer()
     var timer: NSTimer!
     var totalTime: Int! = 600
     var player1Score: Int! = 0
@@ -37,7 +38,6 @@ class ScoreboardViewController: UIViewController {
     
     //This function creates an instance of a shared session, establishes this class as an observer of the tellPhoneToBeTheScoreboard, tellPhoneToBeTheController, tellPhoneToStartGame, tellPhoneToStopGame, tellPhoneScoreData, and tellPhoneTheTime notifications, and calls addSwipe()
     override func viewDidLoad() {
-        print("loaded")
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheControllerNotification(_:)), name:"tellPhoneToBeTheController", object: nil)
@@ -62,7 +62,6 @@ class ScoreboardViewController: UIViewController {
     
     //This function formats the screen to show that it is active
     func activatePhone() {
-        print("here")
         canScoreFromPhone = true
         self.restartGame()
         view.backgroundColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
@@ -76,7 +75,6 @@ class ScoreboardViewController: UIViewController {
     
     //This function formats the screen to show that it is inactive
     func deactivatePhone() {
-        print("here")
         canScoreFromPhone = false
         self.restartGame()
         view.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
@@ -90,7 +88,7 @@ class ScoreboardViewController: UIViewController {
     
     //This function changes the layout of the labels when the tutorial is on
     func layoutWithTutorial() {
-        testStack.hidden = false
+        tutorialStack.hidden = false
         timerLabel.alpha = 0.25
         player1TitleLabel.alpha = 0.25
         player2TitleLabel.alpha = 0.25
@@ -100,7 +98,7 @@ class ScoreboardViewController: UIViewController {
     
     //This function changes the layout of the labels when the tutorial is off
     func layoutWithoutTutorial() {
-        testStack.hidden = true
+        tutorialStack.hidden = true
         timerLabel.alpha = 1
         player1TitleLabel.alpha = 1
         player2TitleLabel.alpha = 1
@@ -160,7 +158,6 @@ class ScoreboardViewController: UIViewController {
             player2Score = player2Score + 1
             player2ScoreLabel.text = String(player2Score)
         } else if sender.direction.rawValue == 8 && canScoreFromPhone == true && timerIsOn == false {
-            print("Swiped down")
             self.beginClock()
             self.layoutWithoutTutorial()
         } else if sender.direction.rawValue == 4 && canScoreFromPhone == true && timerIsOn == true {
@@ -196,6 +193,19 @@ class ScoreboardViewController: UIViewController {
     
     //This functions runs once per second until the totalTime variable reaches 0 before it calls timesUp() with the winning player as a parameter
     func eachSecond(timer: NSTimer) {
+        if totalTime == 300 && player1Score > player2Score {
+            if player1Score > player2Score {
+                let stationaryNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score) to \(player2Score)")
+                self.speechSynthesizer.speakUtterance(stationaryNotice)
+            } else {
+                let stationaryNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score) to \(player1Score)")
+                self.speechSynthesizer.speakUtterance(stationaryNotice)
+            }
+        }
+        if totalTime == 60 {
+            let stationaryNotice = AVSpeechUtterance(string: "One minute remaining")
+            self.speechSynthesizer.speakUtterance(stationaryNotice)
+        }
         if totalTime >= 0 {
             timerLabel.text = self.convertSeconds(totalTime)
         } else {

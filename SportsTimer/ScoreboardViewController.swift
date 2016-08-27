@@ -21,6 +21,7 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var player2ScoreLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var tutorialStack: UIStackView!
+    @IBOutlet weak var timeSlider: UISlider!
     
 //MARK: Variables
     
@@ -136,6 +137,14 @@ class ScoreboardViewController: UIViewController {
         self.displayLabels(dataDict!)
     }
     
+    
+//MARK; Actions
+    
+    @IBAction func totalTimeChanged(sender: AnyObject) {
+        print(timeSlider.value)
+    }
+    
+    
 
 //MARK: Swipe Functions
     
@@ -195,16 +204,16 @@ class ScoreboardViewController: UIViewController {
     func eachSecond(timer: NSTimer) {
         if totalTime == 300 && player1Score > player2Score {
             if player1Score > player2Score {
-                let stationaryNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score) to \(player2Score)")
-                self.speechSynthesizer.speakUtterance(stationaryNotice)
+                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score) to \(player2Score)")
+                self.speechSynthesizer.speakUtterance(statusNotice)
             } else {
-                let stationaryNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score) to \(player1Score)")
-                self.speechSynthesizer.speakUtterance(stationaryNotice)
+                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score) to \(player1Score)")
+                self.speechSynthesizer.speakUtterance(statusNotice)
             }
         }
         if totalTime == 60 {
-            let stationaryNotice = AVSpeechUtterance(string: "One minute remaining")
-            self.speechSynthesizer.speakUtterance(stationaryNotice)
+            let statusNotice = AVSpeechUtterance(string: "One minute remaining")
+            self.speechSynthesizer.speakUtterance(statusNotice)
         }
         if totalTime >= 0 {
             timerLabel.text = self.convertSeconds(totalTime)

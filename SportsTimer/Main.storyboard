@@ -85,39 +85,39 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZYg-QM-hV8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="15" width="600" height="570"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe left to score Player 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vW-42-QQ0">
-                                        <rect key="frame" x="0.0" y="261" width="200" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe right to score Player 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vW-42-QQ0">
+                                        <rect key="frame" x="0.0" y="246" width="200" height="80"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mya-bA-jHz">
-                                        <rect key="frame" x="200" y="0.0" width="200" height="600"/>
+                                        <rect key="frame" x="200" y="0.0" width="200" height="570"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe up to stop" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0l-kM-ds2">
-                                                <rect key="frame" x="5" y="0.0" width="192" height="200"/>
+                                                <rect key="frame" x="5" y="0.0" width="192" height="190"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_550243_cc" translatesAutoresizingMaskIntoConstraints="NO" id="Bui-e4-hwH">
-                                                <rect key="frame" x="0.0" y="200" width="200" height="200"/>
+                                                <rect key="frame" x="5" y="190" width="190" height="190"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Bui-e4-hwH" secondAttribute="height" multiplier="1:1" id="kY1-pX-BkY"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down to start" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l9-mI-m2X">
-                                                <rect key="frame" x="0.0" y="400" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="380" width="200" height="190"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="34"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe right to score Player 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuT-DT-PJC">
-                                        <rect key="frame" x="400" y="261" width="200" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe left to score Player 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuT-DT-PJC">
+                                        <rect key="frame" x="400" y="246" width="200" height="80"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -127,17 +127,26 @@
                                     <constraint firstItem="mya-bA-jHz" firstAttribute="height" secondItem="ZYg-QM-hV8" secondAttribute="height" id="0wl-g5-5sb"/>
                                 </constraints>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hDi-JD-dRl">
+                                <rect key="frame" x="58" y="567" width="484" height="31"/>
+                                <connections>
+                                    <action selector="totalTimeChanged:" destination="1Jk-Jm-xvm" eventType="valueChanged" id="GbN-zi-Tfa"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="leading" secondItem="XMY-gn-H0f" secondAttribute="leading" constant="100" id="8GV-U9-sHX"/>
                             <constraint firstItem="ZYg-QM-hV8" firstAttribute="width" secondItem="XMY-gn-H0f" secondAttribute="width" id="AYs-VD-5Mi"/>
+                            <constraint firstItem="hDi-JD-dRl" firstAttribute="width" secondItem="XMY-gn-H0f" secondAttribute="width" multiplier="0.8" id="Dhe-Jg-0z9"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="width" secondItem="XMY-gn-H0f" secondAttribute="width" id="I7k-72-XbJ"/>
                             <constraint firstItem="ZYg-QM-hV8" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="Nlu-pr-1Yt"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerY" secondItem="XMY-gn-H0f" secondAttribute="centerY" id="O7E-hm-0Oc"/>
                             <constraint firstAttribute="trailing" secondItem="pC3-52-CuB" secondAttribute="trailing" constant="100" id="OqG-Zn-sel"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="PJN-zL-sQg"/>
-                            <constraint firstItem="ZYg-QM-hV8" firstAttribute="height" secondItem="XMY-gn-H0f" secondAttribute="height" id="Yir-y0-BAL"/>
+                            <constraint firstItem="hDi-JD-dRl" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="Xub-XC-Mht"/>
+                            <constraint firstItem="ZYg-QM-hV8" firstAttribute="height" secondItem="XMY-gn-H0f" secondAttribute="height" multiplier="0.95" id="Yir-y0-BAL"/>
+                            <constraint firstItem="IJg-fn-8bx" firstAttribute="top" secondItem="hDi-JD-dRl" secondAttribute="bottom" constant="3" id="ZMh-Qm-GuG"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="top" secondItem="ahI-7z-BEV" secondAttribute="bottom" constant="100" id="bkd-DP-WU4"/>
                             <constraint firstItem="pC3-52-CuB" firstAttribute="height" secondItem="XMY-gn-H0f" secondAttribute="height" id="dUJ-td-4vb"/>
                             <constraint firstItem="ZYg-QM-hV8" firstAttribute="centerX" secondItem="XMY-gn-H0f" secondAttribute="centerX" id="rlJ-CS-WWY"/>
@@ -156,6 +165,7 @@
                         <outlet property="player1TitleLabel" destination="OL8-ZT-5dJ" id="L2C-0a-Yd6"/>
                         <outlet property="player2ScoreLabel" destination="r7r-Lp-hcO" id="XeD-bt-dSg"/>
                         <outlet property="player2TitleLabel" destination="8Ar-o9-RtG" id="Uft-J2-4Do"/>
+                        <outlet property="timeSlider" destination="hDi-JD-dRl" id="2KF-cH-4iP"/>
                         <outlet property="timerLabel" destination="hf8-bn-hDm" id="QXA-PC-myq"/>
                         <outlet property="tutorialStack" destination="ZYg-QM-hV8" id="uVc-T2-frg"/>
                     </connections>

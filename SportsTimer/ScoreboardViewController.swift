@@ -197,10 +197,10 @@ class ScoreboardViewController: UIViewController {
     
     //This functions updates the score labels to match the watch's data
     func displayLabels(_ dataDict: [String : AnyObject]) {
-        player1ScoreLabel.text = String(dataDict["Score1"]!)
-        player2ScoreLabel.text = String(dataDict["Score2"]!)
-        player1Score = Int(String(dataDict["Score1"]!))
-        player2Score = Int(String(dataDict["Score2"]!))
+        player1ScoreLabel.text = String(describing: dataDict["Score1"]!)
+        player2ScoreLabel.text = String(describing:dataDict["Score2"]!)
+        player1Score = Int(String(describing: dataDict["Score1"]!))
+        player2Score = Int(String(describing: dataDict["Score2"]!))
     }
     
     //This functions runs once per second until the totalTime variable reaches 0 before it calls timesUp() with the winning player as a parameter
@@ -242,7 +242,7 @@ class ScoreboardViewController: UIViewController {
     func startTimer(_ dataDict: [String : AnyObject]) {
         DispatchQueue.main.async {
             if self.timerIsOn == false {
-                self.totalTime = Int(String(dataDict["Time"]!))!
+                self.totalTime = Int(String(describing: dataDict["Time"]!))!
                 self.beginClock()
             }
         }

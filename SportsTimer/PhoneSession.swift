@@ -28,7 +28,7 @@ class PhoneSession: NSObject, WCSessionDelegate {
         }
     }
     
-
+    
 //MARK: Data Getters
     
     //This functions receives a message from the Watch
@@ -36,6 +36,34 @@ class PhoneSession: NSObject, WCSessionDelegate {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: Notification.Name(rawValue: message["Action"]! as! String), object: message["Payload"])
         }
+    }
+    
+    
+//MARK: Watch Connectivity
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if activationState == WCSessionActivationState.activated {
+            NSLog("Activated")
+        }
+        
+        if activationState == WCSessionActivationState.inactive {
+            NSLog("Inactive")
+        }
+        
+        if activationState == WCSessionActivationState.notActivated {
+            NSLog("NotActivated")
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        NSLog("sessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        NSLog("sessionDidDeactivate")
+        
+        // Begin the activation process for the new Apple Watch.
+        WCSession.default().activate()
     }
     
 }

@@ -14,63 +14,59 @@ class WatchSession: NSObject, WCSessionDelegate {
 //MARK: Variables
     
     static let sharedInstance = WatchSession()
-    var session: WCSession!
-    
     
 //MARK: Session Creation
     
     //This function creates a session
     func startSession() {
         if WCSession.isSupported() {
-            session = WCSession.default()
+            let session = WCSession.default()
             session.delegate = self
             session.activate()
         }
     }
     
-    
+
 //MARK: Data Senders
     
     //This function sends a message to PhoneSession with the key tellPhoneToBeTheController
     func tellPhoneToBeTheController() {
         let actionDictFromWatch = ["Action": "tellPhoneToBeTheController"]
-        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
+        sendMessage(messageDict: actionDictFromWatch)
     }
-    
+
     //This function sends a message to PhoneSession with the key tellPhoneToBeTheScoreboard
     func tellPhoneToBeTheScoreboard() {
         let actionDictFromWatch = ["Action": "tellPhoneToBeTheScoreboard"]
-        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
+        sendMessage(messageDict: actionDictFromWatch)
     }
     
     //This function sends a message to PhoneSession with a dictionary containing a tellPhoneToStartGame value
     func tellPhoneToStartGame(_ time: TimeInterval) {
         let payloadDictFromWatch = ["Time": time]
-        let actionDictFromWatch = ["Action": "tellPhoneToStartGame", "Payload": payloadDictFromWatch]
-        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
+        sendMessage(messageDict: payloadDictFromWatch)
     }
     
     //This function sends a message to PhoneSession with the key tellPhoneToStopGame
     func tellPhoneToStopGame() {
         let actionDictFromWatch = ["Action": "tellPhoneToStopGame"]
-        session.sendMessage(actionDictFromWatch, replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
+        sendMessage(messageDict: actionDictFromWatch)
     }
     
     //This function sends a message to PhoneSession with a dictionary containing a startRunToPhone value
     func tellPhoneScoreData(_ score1: Int, score2: Int) {
         let payloadDictFromWatch = ["Score1": score1, "Score2": score2]
-        let actionDictFromWatch = ["Action": "tellPhoneScoreData", "Payload": payloadDictFromWatch]
-        session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
-            print(error)
-        }
+        let actionDictFromWatch = ["Action": "tellPhoneScoreData", "Payload": payloadDictFromWatch] as [String : Any]
+        sendMessage(messageDict: actionDictFromWatch)
+    }
+    
+   //This functions manually sends message to the phone
+    func sendMessage (messageDict: [String : Any]) {
+        WCSession.default().sendMessage(messageDict, replyHandler: { (replyDict) -> Void in
+            print("replyDict \(replyDict)")
+            }, errorHandler: { (error) -> Void in
+                print(error)
+                print("there's an error") })
     }
     
     
@@ -82,5 +78,35 @@ class WatchSession: NSObject, WCSessionDelegate {
             NotificationCenter.default.post(name: Notification.Name(rawValue: message["Action"]! as! String), object: message["Payload"])
         }
     }
+
+    
+//MARK: Phone Connectivity
+
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if activationState == WCSessionActivationState.activated {
+            NSLog("Activated")
+        }
+        
+        if activationState == WCSessionActivationState.inactive {
+            NSLog("Inactive")
+        }
+        
+        if activationState == WCSessionActivationState.notActivated {
+            NSLog("NotActivated")
+        }
+    }
+    
+/*
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        NSLog("sgoessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        NSLog("sessionDidDeactivate")
+        
+        // Begin the activation process for the new Apple Watch.
+          WCSession.default().activate()
+    }
+*/
     
 }

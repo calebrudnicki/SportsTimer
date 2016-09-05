@@ -14,7 +14,7 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
     /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
     @available(watchOS 2.2, *)
     public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("Hi")
+        print(error)
     }
 
     
@@ -129,6 +129,17 @@ class ScoreboardInterfaceController: WKInterfaceController, WCSessionDelegate {
         score2 = score2 + 1
         player2Score.setTitle(String(score2))
         WatchSession.sharedInstance.tellPhoneScoreData(score1, score2: score2)
+    }
+    
+    //This function pauses the timer when the pause button is tapped
+    @IBAction func pauseButtonTapped() {
+        timer.stop()
+    }
+    
+    //This function starts the timer when the play button is tapped
+    @IBAction func startButtonTapped() {
+        countdown -= 1
+        self.newGame()
     }
     
 }

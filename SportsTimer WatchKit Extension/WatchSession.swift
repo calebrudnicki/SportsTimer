@@ -22,9 +22,9 @@ class WatchSession: NSObject, WCSessionDelegate {
     //This function creates a session
     func startSession() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
     }
     
@@ -48,7 +48,7 @@ class WatchSession: NSObject, WCSessionDelegate {
     }
     
     //This function sends a message to PhoneSession with a dictionary containing a tellPhoneToStartGame value
-    func tellPhoneToStartGame(time: NSTimeInterval) {
+    func tellPhoneToStartGame(_ time: TimeInterval) {
         let payloadDictFromWatch = ["Time": time]
         let actionDictFromWatch = ["Action": "tellPhoneToStartGame", "Payload": payloadDictFromWatch]
         session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
@@ -65,7 +65,7 @@ class WatchSession: NSObject, WCSessionDelegate {
     }
     
     //This function sends a message to PhoneSession with a dictionary containing a startRunToPhone value
-    func tellPhoneScoreData(score1: Int, score2: Int) {
+    func tellPhoneScoreData(_ score1: Int, score2: Int) {
         let payloadDictFromWatch = ["Score1": score1, "Score2": score2]
         let actionDictFromWatch = ["Action": "tellPhoneScoreData", "Payload": payloadDictFromWatch]
         session.sendMessage(actionDictFromWatch as! [String : AnyObject], replyHandler: nil) { (error: NSError) in
@@ -77,9 +77,9 @@ class WatchSession: NSObject, WCSessionDelegate {
 //MARK: Data Getters
     
     //This functions receives a message from the Watch
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: message["Action"]! as! String), object: message["Payload"])
         }
     }
     

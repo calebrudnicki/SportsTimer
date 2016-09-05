@@ -45,6 +45,11 @@
                             <edgeInsets key="margins" left="3" right="3" top="0.0" bottom="0.0"/>
                         </group>
                     </items>
+                    <menu key="menu" id="kR6-1C-Og6">
+                        <items>
+                            <menuItem title="Menu Item" icon="pause" id="LT7-YI-gbf"/>
+                        </items>
+                    </menu>
                     <color key="backgroundColor" red="0.086274512112140656" green="0.62745100259780884" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="player1Score" destination="tqc-Bv-34b" id="8RD-te-8hK"/>

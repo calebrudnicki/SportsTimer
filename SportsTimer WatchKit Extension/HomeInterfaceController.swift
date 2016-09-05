@@ -13,8 +13,8 @@ class HomeInterfaceController: WKInterfaceController {
     
 //MARK: Boilerplate Functions
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
     }
     
     //This function makes a shared instance of watch session
@@ -34,7 +34,7 @@ class HomeInterfaceController: WKInterfaceController {
     //This function segues to the ScoreboardInterfaceController when the start run button is tapped
     @IBAction func startGameButtonTapped() {
         WatchSession.sharedInstance.tellPhoneToBeTheScoreboard()
-        self.presentControllerWithName("Scoreboard Interface Controller", context: nil)
+        self.presentController(withName: "Scoreboard Interface Controller", context: nil)
     }
 
 }

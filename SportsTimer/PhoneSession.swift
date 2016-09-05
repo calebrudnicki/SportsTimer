@@ -22,9 +22,9 @@ class PhoneSession: NSObject, WCSessionDelegate {
     //This function creates a session
     func startSession() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
     }
     
@@ -32,9 +32,9 @@ class PhoneSession: NSObject, WCSessionDelegate {
 //MARK: Data Getters
     
     //This functions receives a message from the Watch
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName(message["Action"]! as! String, object: message["Payload"])
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: message["Action"]! as! String), object: message["Payload"])
         }
     }
     

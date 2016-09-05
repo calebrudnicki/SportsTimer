@@ -26,7 +26,7 @@ class ScoreboardViewController: UIViewController {
 //MARK: Variables
     
     let speechSynthesizer = AVSpeechSynthesizer()
-    var timer: NSTimer!
+    var timer: Timer!
     var totalTime: Int! = 600
     var player1Score: Int! = 0
     var player2Score: Int! = 0
@@ -41,11 +41,11 @@ class ScoreboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         PhoneSession.sharedInstance.startSession()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheControllerNotification(_:)), name:"tellPhoneToBeTheController", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheScoreboardNotification(_:)), name:"tellPhoneToBeTheScoreboard", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStartGameNotification(_:)), name:"tellPhoneToStartGame", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStopGameNotification(_:)), name:"tellPhoneToStopGame", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneScoreDataNotification(_:)), name:"tellPhoneScoreData", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheControllerNotification(_:)), name:NSNotification.Name(rawValue: "tellPhoneToBeTheController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToBeTheScoreboardNotification(_:)), name:NSNotification.Name(rawValue: "tellPhoneToBeTheScoreboard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStartGameNotification(_:)), name:NSNotification.Name(rawValue: "tellPhoneToStartGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneToStopGameNotification(_:)), name:NSNotification.Name(rawValue: "tellPhoneToStopGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ScoreboardViewController.receivedTellPhoneScoreDataNotification(_:)), name:NSNotification.Name(rawValue: "tellPhoneScoreData"), object: nil)
         self.addSwipe()
     }
     
@@ -54,8 +54,8 @@ class ScoreboardViewController: UIViewController {
     }
     
     //This function removes itself as an observer when the view disappears
-    override func viewDidDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
 
@@ -89,50 +89,52 @@ class ScoreboardViewController: UIViewController {
     
     //This function changes the layout of the labels when the tutorial is on
     func layoutWithTutorial() {
-        tutorialStack.hidden = false
+        tutorialStack.isHidden = false
         timerLabel.alpha = 0.25
         player1TitleLabel.alpha = 0.25
         player2TitleLabel.alpha = 0.25
         player1ScoreLabel.alpha = 0.25
         player2ScoreLabel.alpha = 0.25
+        timeSlider.isHidden = false
     }
     
     //This function changes the layout of the labels when the tutorial is off
     func layoutWithoutTutorial() {
-        tutorialStack.hidden = true
+        tutorialStack.isHidden = true
         timerLabel.alpha = 1
         player1TitleLabel.alpha = 1
         player2TitleLabel.alpha = 1
         player1ScoreLabel.alpha = 1
         player2ScoreLabel.alpha = 1
+        timeSlider.isHidden = true
     }
     
     
 //MARK: Watch Communication Functions
     
     //This function that gets called everytime a tellPhoneToBeTheController notification is posted calls activatePhone()
-    func receivedTellPhoneToBeTheControllerNotification(notification: NSNotification) {
+    func receivedTellPhoneToBeTheControllerNotification(_ notification: Notification) {
         self.activatePhone()
     }
     
     //This function that gets called everytime a tellPhoneToBeTheScoreboard notification is posted calls deactivatePhone()
-    func receivedTellPhoneToBeTheScoreboardNotification(notification: NSNotification) {
+    func receivedTellPhoneToBeTheScoreboardNotification(_ notification: Notification) {
         self.deactivatePhone()
     }
     
     //This function that gets called everytime a tellPhoneToStartGame notification is posted calls startTimer()
-    func receivedTellPhoneToStartGameNotification(notification: NSNotification) {
+    func receivedTellPhoneToStartGameNotification(_ notification: Notification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.startTimer(dataDict!)
     }
     
     //This function that gets called everytime the tellPhoneToStopGame notification is posted calls restartGame()
-    func receivedTellPhoneToStopGameNotification(notification: NSNotification) {
+    func receivedTellPhoneToStopGameNotification(_ notification: Notification) {
         self.restartGame()
     }
     
     //This function that gets called everytime a tellPhoneScoreData notification is posted calls displayLabels()
-    func receivedTellPhoneScoreDataNotification(notification: NSNotification) {
+    func receivedTellPhoneScoreDataNotification(_ notification: Notification) {
         let dataDict = notification.object as? [String : AnyObject]
         self.displayLabels(dataDict!)
     }
@@ -140,8 +142,9 @@ class ScoreboardViewController: UIViewController {
     
 //MARK; Actions
     
-    @IBAction func totalTimeChanged(sender: AnyObject) {
-        print(timeSlider.value)
+    //This functions sets the time of the game based on the slider
+    @IBAction func totalTimeChanged(_ sender: AnyObject) {
+        totalTime = Int(timeSlider.value * 100)
     }
     
     
@@ -150,7 +153,7 @@ class ScoreboardViewController: UIViewController {
     
     //This funtions creates the swipe gestures and then adds them to the view
     func addSwipe() {
-        let directions: [UISwipeGestureRecognizerDirection] = [.Right, .Left, .Down, .Up]
+        let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .down, .up]
         for direction in directions {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ScoreboardViewController.handleSwipe(_:)))
             gesture.direction = direction
@@ -159,7 +162,7 @@ class ScoreboardViewController: UIViewController {
     }
     
     //This functions handles each swipe and its functionality within the app
-    func handleSwipe(sender: UISwipeGestureRecognizer) {
+    func handleSwipe(_ sender: UISwipeGestureRecognizer) {
         if sender.direction.rawValue == 1 && canScoreFromPhone == true && timerIsOn == true {
             player1Score = player1Score + 1
             player1ScoreLabel.text = String(player1Score)
@@ -193,7 +196,7 @@ class ScoreboardViewController: UIViewController {
     }
     
     //This functions updates the score labels to match the watch's data
-    func displayLabels(dataDict: [String : AnyObject]) {
+    func displayLabels(_ dataDict: [String : AnyObject]) {
         player1ScoreLabel.text = String(dataDict["Score1"]!)
         player2ScoreLabel.text = String(dataDict["Score2"]!)
         player1Score = Int(String(dataDict["Score1"]!))
@@ -201,19 +204,19 @@ class ScoreboardViewController: UIViewController {
     }
     
     //This functions runs once per second until the totalTime variable reaches 0 before it calls timesUp() with the winning player as a parameter
-    func eachSecond(timer: NSTimer) {
+    func eachSecond(_ timer: Timer) {
         if totalTime == 300 && player1Score > player2Score {
             if player1Score > player2Score {
                 let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score) to \(player2Score)")
-                self.speechSynthesizer.speakUtterance(statusNotice)
+                self.speechSynthesizer.speak(statusNotice)
             } else {
                 let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score) to \(player1Score)")
-                self.speechSynthesizer.speakUtterance(statusNotice)
+                self.speechSynthesizer.speak(statusNotice)
             }
         }
         if totalTime == 60 {
             let statusNotice = AVSpeechUtterance(string: "One minute remaining")
-            self.speechSynthesizer.speakUtterance(statusNotice)
+            self.speechSynthesizer.speak(statusNotice)
         }
         if totalTime >= 0 {
             timerLabel.text = self.convertSeconds(totalTime)
@@ -236,8 +239,8 @@ class ScoreboardViewController: UIViewController {
 //MARK: Timer Functions
     
     //This functions sets totalTime to the amount of starting time on the watch and then creates a timer that calls eachSecond()
-    func startTimer(dataDict: [String : AnyObject]) {
-        dispatch_async(dispatch_get_main_queue()) {
+    func startTimer(_ dataDict: [String : AnyObject]) {
+        DispatchQueue.main.async {
             if self.timerIsOn == false {
                 self.totalTime = Int(String(dataDict["Time"]!))!
                 self.beginClock()
@@ -247,30 +250,30 @@ class ScoreboardViewController: UIViewController {
     
     //This function starts the clock
     func beginClock() {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScoreboardViewController.eachSecond(_:)), userInfo: nil, repeats: true)
         self.timerIsOn = true
     }
     
     //This functions gets called when the time is up and determines which player is the winner
-    func timesUp(winner: String) {
+    func timesUp(_ winner: String) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if winner == "Player1" {
-            player1ScoreLabel.textColor = UIColor.greenColor()
-            player2ScoreLabel.textColor = UIColor.redColor()
+            player1ScoreLabel.textColor = UIColor.green
+            player2ScoreLabel.textColor = UIColor.red
         } else if winner == "Player2" {
-            player2ScoreLabel.textColor = UIColor.greenColor()
-            player1ScoreLabel.textColor = UIColor.redColor()
+            player2ScoreLabel.textColor = UIColor.green
+            player1ScoreLabel.textColor = UIColor.red
         } else if winner == "Tie" {
-            player1ScoreLabel.textColor = UIColor.blueColor()
-            player2ScoreLabel.textColor = UIColor.blueColor()
+            player1ScoreLabel.textColor = UIColor.blue
+            player2ScoreLabel.textColor = UIColor.blue
         }
     }
     
     //This function converts seconds into the string format minutes:seconds
-    func convertSeconds(seconds: Int) -> String {
+    func convertSeconds(_ seconds: Int) -> String {
         let secs: Double! = Double(seconds)
-        let minutePlace = Int(floor(secs / 60) % 60)
-        let secondPlace = Int(floor(secs) % 60)
+        let minutePlace = Int(floor(secs / 60).truncatingRemainder(dividingBy: 60))
+        let secondPlace = Int(floor(secs).truncatingRemainder(dividingBy: 60))
         return String(format: "%02d:%02d", minutePlace, secondPlace)
     }
     

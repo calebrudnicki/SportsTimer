@@ -108,5 +108,4 @@ class WatchSession: NSObject, WCSessionDelegate {
           WCSession.default().activate()
     }
 */
-    
 }

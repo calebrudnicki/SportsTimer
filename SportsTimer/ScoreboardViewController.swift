@@ -17,11 +17,9 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var player1TitleLabel: UILabel!
     @IBOutlet weak var player2TitleLabel: UILabel!
-    @IBOutlet weak var player1ScoreLabel: UILabel!
-    @IBOutlet weak var player2ScoreLabel: UILabel!
-    @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet weak var player1Button: UIButton!
+    @IBOutlet weak var player2Button: UIButton!
     @IBOutlet weak var tutorialStack: UIStackView!
-    @IBOutlet weak var timeSlider: UISlider!
     
 //MARK: Variables
     
@@ -69,8 +67,8 @@ class ScoreboardViewController: UIViewController {
         timerLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         player1TitleLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         player2TitleLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
-        player1ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
-        player2ScoreLabel.textColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player1Button.tintColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        player2Button.tintColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         self.layoutWithTutorial()
     }
     
@@ -82,8 +80,8 @@ class ScoreboardViewController: UIViewController {
         timerLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         player1TitleLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         player2TitleLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
-        player1ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
-        player2ScoreLabel.textColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player1Button.tintColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        player2Button.tintColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         self.layoutWithoutTutorial()
     }
     
@@ -93,9 +91,8 @@ class ScoreboardViewController: UIViewController {
         timerLabel.alpha = 0.25
         player1TitleLabel.alpha = 0.25
         player2TitleLabel.alpha = 0.25
-        player1ScoreLabel.alpha = 0.25
-        player2ScoreLabel.alpha = 0.25
-        timeSlider.isHidden = false
+        player1Button.alpha = 0.25
+        player2Button.alpha = 0.25
     }
     
     //This function changes the layout of the labels when the tutorial is off
@@ -104,9 +101,8 @@ class ScoreboardViewController: UIViewController {
         timerLabel.alpha = 1
         player1TitleLabel.alpha = 1
         player2TitleLabel.alpha = 1
-        player1ScoreLabel.alpha = 1
-        player2ScoreLabel.alpha = 1
-        timeSlider.isHidden = true
+        player1Button.alpha = 1
+        player2Button.alpha = 1
     }
     
     
@@ -139,21 +135,12 @@ class ScoreboardViewController: UIViewController {
         self.displayLabels(dataDict!)
     }
     
-    
-//MARK; Actions
-    
-    //This functions sets the time of the game based on the slider
-    @IBAction func totalTimeChanged(_ sender: AnyObject) {
-        totalTime = Int(timeSlider.value * 100)
-    }
-    
-    
 
 //MARK: Swipe Functions
     
     //This funtions creates the swipe gestures and then adds them to the view
     func addSwipe() {
-        let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .down, .up]
+        let directions: [UISwipeGestureRecognizerDirection] = [.down, .up]
         for direction in directions {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ScoreboardViewController.handleSwipe(_:)))
             gesture.direction = direction
@@ -163,13 +150,7 @@ class ScoreboardViewController: UIViewController {
     
     //This functions handles each swipe and its functionality within the app
     func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        if sender.direction.rawValue == 1 && canScoreFromPhone == true && timerIsOn == true {
-            player1Score = player1Score + 1
-            player1ScoreLabel.text = String(player1Score)
-        } else if sender.direction.rawValue == 2 && canScoreFromPhone == true  && timerIsOn == true {
-            player2Score = player2Score + 1
-            player2ScoreLabel.text = String(player2Score)
-        } else if sender.direction.rawValue == 8 && canScoreFromPhone == true && timerIsOn == false {
+        if sender.direction.rawValue == 8 && canScoreFromPhone == true && timerIsOn == false {
             self.beginClock()
             self.layoutWithoutTutorial()
         } else if sender.direction.rawValue == 4 && canScoreFromPhone == true && timerIsOn == true {
@@ -177,6 +158,22 @@ class ScoreboardViewController: UIViewController {
             self.layoutWithTutorial()
         }
     }
+    
+    
+//MARK: Actions
+    
+    //This function adds one to player 1 when the button is tapped
+    @IBAction func player1ButtonTapped(_ sender: AnyObject) {
+        player1Score = player1Score + 1
+        player1Button.setTitle(String(player1Score), for: .normal)
+    }
+    
+    //This function adds one to player 2 when the button is tapped
+    @IBAction func player2ButtonTapped(_ sender: AnyObject) {
+        player2Score = player2Score + 1
+        player2Button.setTitle(String(player2Score), for: .normal)
+    }
+    
     
     
 //MARK: Label Functions
@@ -191,32 +188,24 @@ class ScoreboardViewController: UIViewController {
         timerLabel.text = "10:00"
         player1Score = 0
         player2Score = 0
-        player1ScoreLabel.text = "0"
-        player2ScoreLabel.text = "0"
+        player1Button.setTitle("0", for: .normal)
+        player2Button.setTitle("0", for: .normal)
     }
     
     //This functions updates the score labels to match the watch's data
     func displayLabels(_ dataDict: [String : AnyObject]) {
-        player1ScoreLabel.text = String(describing: dataDict["Score1"]!)
-        player2ScoreLabel.text = String(describing:dataDict["Score2"]!)
+        player1Button.setTitle(String(describing: dataDict["Score1"]!), for: .normal)
+        player2Button.setTitle(String(describing: dataDict["Score2"]!), for: .normal)
         player1Score = Int(String(describing: dataDict["Score1"]!))
         player2Score = Int(String(describing: dataDict["Score2"]!))
     }
     
     //This functions runs once per second until the totalTime variable reaches 0 before it calls timesUp() with the winning player as a parameter
     func eachSecond(_ timer: Timer) {
-        if totalTime == 300 && player1Score > player2Score {
-            if player1Score > player2Score {
-                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score) to \(player2Score)")
-                self.speechSynthesizer.speak(statusNotice)
-            } else {
-                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score) to \(player1Score)")
-                self.speechSynthesizer.speak(statusNotice)
-            }
-        }
-        if totalTime == 60 {
-            let statusNotice = AVSpeechUtterance(string: "One minute remaining")
-            self.speechSynthesizer.speak(statusNotice)
+        if totalTime == 300 {
+            self.speakGameStatus(occasion: "HalfWayPoint")
+        } else if totalTime == 60 {
+            self.speakGameStatus(occasion: "OneMinuteRemaining")
         }
         if totalTime >= 0 {
             timerLabel.text = self.convertSeconds(totalTime)
@@ -256,16 +245,17 @@ class ScoreboardViewController: UIViewController {
     
     //This functions gets called when the time is up and determines which player is the winner
     func timesUp(_ winner: String) {
+        self.speakGameStatus(occasion: "TimesUp")
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         if winner == "Player1" {
-            player1ScoreLabel.textColor = UIColor.green
-            player2ScoreLabel.textColor = UIColor.red
+            player1Button.tintColor = UIColor.green
+            player2Button.tintColor = UIColor.red
         } else if winner == "Player2" {
-            player2ScoreLabel.textColor = UIColor.green
-            player1ScoreLabel.textColor = UIColor.red
+            player2Button.tintColor = UIColor.green
+            player1Button.tintColor = UIColor.red
         } else if winner == "Tie" {
-            player1ScoreLabel.textColor = UIColor.blue
-            player2ScoreLabel.textColor = UIColor.blue
+            player1Button.tintColor = UIColor.blue
+            player2Button.tintColor = UIColor.blue
         }
     }
     
@@ -275,6 +265,47 @@ class ScoreboardViewController: UIViewController {
         let minutePlace = Int(floor(secs / 60).truncatingRemainder(dividingBy: 60))
         let secondPlace = Int(floor(secs).truncatingRemainder(dividingBy: 60))
         return String(format: "%02d:%02d", minutePlace, secondPlace)
+    }
+    
+    
+//MARK: Speech Functions
+    
+    //This function sends a voice notification to the user about the status of the game
+    func speakGameStatus(occasion: String) {
+        if occasion == "HalfWayPoint" {
+            if player1Score == player2Score {
+                let statusNotice = AVSpeechUtterance(string: "At the halfway point of the game, both sides are tied at \(player1Score!)")
+                self.speechSynthesizer.speak(statusNotice)
+            } else if player1Score > player2Score {
+                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 1 is winning \(player1Score!) to \(player2Score!)")
+                self.speechSynthesizer.speak(statusNotice)
+            } else {
+                let statusNotice = AVSpeechUtterance(string: "Half of the game has passed. Player 2 is winning \(player2Score!) to \(player1Score!)")
+                self.speechSynthesizer.speak(statusNotice)
+            }
+        } else if occasion == "OneMinuteRemaining" {
+            if player1Score == player2Score {
+                let statusNotice = AVSpeechUtterance(string: "One minute remaining. Both sides are tied at \(player1Score!) a peice")
+                self.speechSynthesizer.speak(statusNotice)
+            } else if player1Score > player2Score {
+                let statusNotice = AVSpeechUtterance(string: "One minute remaining. Player 2 is down by \(player1Score! - player2Score!) goals")
+                self.speechSynthesizer.speak(statusNotice)
+            } else {
+                let statusNotice = AVSpeechUtterance(string: "One minute remaining. Player 1 is down by \(player2Score! - player1Score!) goals")
+                self.speechSynthesizer.speak(statusNotice)
+            }
+        } else if occasion == "TimesUp" {
+            if player1Score == player2Score {
+                let statusNotice = AVSpeechUtterance(string: "Game over. Both sides tied the game with \(player1Score) points")
+                self.speechSynthesizer.speak(statusNotice)
+            } else if player1Score > player2Score {
+                let statusNotice = AVSpeechUtterance(string: "Game over. Player 1 wins \(player1Score!) to \(player2Score!)")
+                self.speechSynthesizer.speak(statusNotice)
+            } else {
+                let statusNotice = AVSpeechUtterance(string: "Game over. Player 2 wins \(player1Score!) to \(player2Score!)")
+                self.speechSynthesizer.speak(statusNotice)
+            }
+        }
     }
     
 }

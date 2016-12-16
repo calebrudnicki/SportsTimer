@@ -1,0 +1,716 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		822191E11D1C2AA500309328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822191E01D1C2AA500309328 /* AppDelegate.swift */; };
+		822191E81D1C2AA500309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822191E71D1C2AA500309328 /* Assets.xcassets */; };
+		822191EB1D1C2AA500309328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822191E91D1C2AA500309328 /* LaunchScreen.storyboard */; };
+		822191F01D1C2AA600309328 /* SportsTimer WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 822191EF1D1C2AA600309328 /* SportsTimer WatchKit App.app */; };
+		822191F61D1C2AA600309328 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822191F41D1C2AA600309328 /* Interface.storyboard */; };
+		822191F81D1C2AA600309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822191F71D1C2AA600309328 /* Assets.xcassets */; };
+		822191FF1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		822192061D1C2AA600309328 /* ScoreboardInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */; };
+		822192081D1C2AA600309328 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192071D1C2AA600309328 /* ExtensionDelegate.swift */; };
+		8221920A1D1C2AA600309328 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822192091D1C2AA600309328 /* NotificationController.swift */; };
+		8221920C1D1C2AA600309328 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8221920B1D1C2AA600309328 /* GlanceController.swift */; };
+		8221920E1D1C2AA600309328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8221920D1D1C2AA600309328 /* Assets.xcassets */; };
+		822B6E0A1D57A86A002566AA /* WatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B6E091D57A86A002566AA /* WatchSession.swift */; };
+		822B6E0C1D57AA0A002566AA /* PhoneSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B6E0B1D57AA0A002566AA /* PhoneSession.swift */; };
+		8235D42F1D5933BC00E6CC88 /* HomeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8235D42E1D5933BC00E6CC88 /* HomeInterfaceController.swift */; };
+		8235D44A1D5A168800E6CC88 /* SF-UI-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4311D5A14A300E6CC88 /* SF-UI-Display-Black.otf */; };
+		8235D44B1D5A168800E6CC88 /* SF-UI-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4321D5A14A300E6CC88 /* SF-UI-Display-Bold.otf */; };
+		8235D44C1D5A168800E6CC88 /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4331D5A14A300E6CC88 /* SF-UI-Display-Heavy.otf */; };
+		8235D44D1D5A168800E6CC88 /* SF-UI-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4341D5A14A300E6CC88 /* SF-UI-Display-Light.otf */; };
+		8235D44E1D5A168800E6CC88 /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4351D5A14A300E6CC88 /* SF-UI-Display-Medium.otf */; };
+		8235D44F1D5A168800E6CC88 /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4361D5A14A300E6CC88 /* SF-UI-Display-Regular.otf */; };
+		8235D4501D5A168800E6CC88 /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4371D5A14A300E6CC88 /* SF-UI-Display-Semibold.otf */; };
+		8235D4511D5A168800E6CC88 /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4381D5A14A300E6CC88 /* SF-UI-Display-Thin.otf */; };
+		8235D4521D5A168800E6CC88 /* SF-UI-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4391D5A14A300E6CC88 /* SF-UI-Display-Ultralight.otf */; };
+		8235D4531D5A168800E6CC88 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43A1D5A14A300E6CC88 /* SF-UI-Text-Bold.otf */; };
+		8235D4541D5A168800E6CC88 /* SF-UI-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43B1D5A14A300E6CC88 /* SF-UI-Text-BoldItalic.otf */; };
+		8235D4551D5A168800E6CC88 /* SF-UI-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43C1D5A14A300E6CC88 /* SF-UI-Text-Heavy.otf */; };
+		8235D4561D5A168800E6CC88 /* SF-UI-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43D1D5A14A300E6CC88 /* SF-UI-Text-HeavyItalic.otf */; };
+		8235D4571D5A168800E6CC88 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43E1D5A14A300E6CC88 /* SF-UI-Text-Light.otf */; };
+		8235D4581D5A168800E6CC88 /* SF-UI-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D43F1D5A14A300E6CC88 /* SF-UI-Text-LightItalic.otf */; };
+		8235D4591D5A168800E6CC88 /* SF-UI-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4401D5A14A300E6CC88 /* SF-UI-Text-Medium.otf */; };
+		8235D45A1D5A168800E6CC88 /* SF-UI-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4411D5A14A300E6CC88 /* SF-UI-Text-MediumItalic.otf */; };
+		8235D45B1D5A168800E6CC88 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4421D5A14A300E6CC88 /* SF-UI-Text-Regular.otf */; };
+		8235D45C1D5A168800E6CC88 /* SF-UI-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4431D5A14A300E6CC88 /* SF-UI-Text-RegularItalic.otf */; };
+		8235D45D1D5A168800E6CC88 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4441D5A14A300E6CC88 /* SF-UI-Text-Semibold.otf */; };
+		8235D45E1D5A168800E6CC88 /* SF-UI-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4451D5A14A300E6CC88 /* SF-UI-Text-SemiboldItalic.otf */; };
+		8235D45F1D5A168800E6CC88 /* System San Francisco Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4461D5A14A300E6CC88 /* System San Francisco Display Bold.ttf */; };
+		8235D4601D5A168800E6CC88 /* System San Francisco Display Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4471D5A14A300E6CC88 /* System San Francisco Display Regular.ttf */; };
+		8235D4611D5A168800E6CC88 /* System San Francisco Display Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4481D5A14A300E6CC88 /* System San Francisco Display Thin.ttf */; };
+		8235D4621D5A168800E6CC88 /* System San Francisco Display Ultralight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8235D4491D5A14A300E6CC88 /* System San Francisco Display Ultralight.ttf */; };
+		824435331D2D6FA200383452 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824435321D2D6FA200383452 /* ScoreboardViewController.swift */; };
+		8284C9831D2EE70600A08EEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8284C9821D2EE70600A08EEF /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		822191F11D1C2AA600309328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 822191D51D1C2AA500309328 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 822191EE1D1C2AA600309328;
+			remoteInfo = "SportsTimer WatchKit App";
+		};
+		822192001D1C2AA600309328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 822191D51D1C2AA500309328 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 822191FD1D1C2AA600309328;
+			remoteInfo = "SportsTimer WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		822192151D1C2AA600309328 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				822191FF1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		822192191D1C2AA600309328 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				822191F01D1C2AA600309328 /* SportsTimer WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		822191DD1D1C2AA500309328 /* SportsTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		822191E01D1C2AA500309328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		822191E71D1C2AA500309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		822191EA1D1C2AA500309328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		822191EC1D1C2AA500309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		822191EF1D1C2AA600309328 /* SportsTimer WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SportsTimer WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		822191F51D1C2AA600309328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		822191F71D1C2AA600309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		822191F91D1C2AA600309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SportsTimer WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		822192041D1C2AA600309328 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardInterfaceController.swift; sourceTree = "<group>"; };
+		822192071D1C2AA600309328 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		822192091D1C2AA600309328 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		8221920B1D1C2AA600309328 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		8221920D1D1C2AA600309328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8221920F1D1C2AA600309328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		822B6E091D57A86A002566AA /* WatchSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSession.swift; sourceTree = "<group>"; };
+		822B6E0B1D57AA0A002566AA /* PhoneSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneSession.swift; sourceTree = "<group>"; };
+		8235D42E1D5933BC00E6CC88 /* HomeInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInterfaceController.swift; sourceTree = "<group>"; };
+		8235D4311D5A14A300E6CC88 /* SF-UI-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Black.otf"; sourceTree = "<group>"; };
+		8235D4321D5A14A300E6CC88 /* SF-UI-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Bold.otf"; sourceTree = "<group>"; };
+		8235D4331D5A14A300E6CC88 /* SF-UI-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Heavy.otf"; sourceTree = "<group>"; };
+		8235D4341D5A14A300E6CC88 /* SF-UI-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Light.otf"; sourceTree = "<group>"; };
+		8235D4351D5A14A300E6CC88 /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
+		8235D4361D5A14A300E6CC88 /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
+		8235D4371D5A14A300E6CC88 /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
+		8235D4381D5A14A300E6CC88 /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
+		8235D4391D5A14A300E6CC88 /* SF-UI-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		8235D43A1D5A14A300E6CC88 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
+		8235D43B1D5A14A300E6CC88 /* SF-UI-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		8235D43C1D5A14A300E6CC88 /* SF-UI-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Heavy.otf"; sourceTree = "<group>"; };
+		8235D43D1D5A14A300E6CC88 /* SF-UI-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		8235D43E1D5A14A300E6CC88 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
+		8235D43F1D5A14A300E6CC88 /* SF-UI-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		8235D4401D5A14A300E6CC88 /* SF-UI-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Medium.otf"; sourceTree = "<group>"; };
+		8235D4411D5A14A300E6CC88 /* SF-UI-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		8235D4421D5A14A300E6CC88 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
+		8235D4431D5A14A300E6CC88 /* SF-UI-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		8235D4441D5A14A300E6CC88 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
+		8235D4451D5A14A300E6CC88 /* SF-UI-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		8235D4461D5A14A300E6CC88 /* System San Francisco Display Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Bold.ttf"; sourceTree = "<group>"; };
+		8235D4471D5A14A300E6CC88 /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
+		8235D4481D5A14A300E6CC88 /* System San Francisco Display Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Thin.ttf"; sourceTree = "<group>"; };
+		8235D4491D5A14A300E6CC88 /* System San Francisco Display Ultralight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Ultralight.ttf"; sourceTree = "<group>"; };
+		8235D4651D5BC2A900E6CC88 /* SportsTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SportsTimer.entitlements; sourceTree = "<group>"; };
+		824435321D2D6FA200383452 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
+		8284C9821D2EE70600A08EEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		822191DA1D1C2AA500309328 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		822191FB1D1C2AA600309328 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		822191D41D1C2AA500309328 = {
+			isa = PBXGroup;
+			children = (
+				822191DF1D1C2AA500309328 /* SportsTimer */,
+				822191F31D1C2AA600309328 /* SportsTimer WatchKit App */,
+				822192021D1C2AA600309328 /* SportsTimer WatchKit Extension */,
+				822191DE1D1C2AA500309328 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		822191DE1D1C2AA500309328 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				822191DD1D1C2AA500309328 /* SportsTimer.app */,
+				822191EF1D1C2AA600309328 /* SportsTimer WatchKit App.app */,
+				822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		822191DF1D1C2AA500309328 /* SportsTimer */ = {
+			isa = PBXGroup;
+			children = (
+				8235D4651D5BC2A900E6CC88 /* SportsTimer.entitlements */,
+				8235D4301D5A146400E6CC88 /* Resources */,
+				822191E01D1C2AA500309328 /* AppDelegate.swift */,
+				822B6E0B1D57AA0A002566AA /* PhoneSession.swift */,
+				824435321D2D6FA200383452 /* ScoreboardViewController.swift */,
+				8284C9821D2EE70600A08EEF /* Main.storyboard */,
+				822191E71D1C2AA500309328 /* Assets.xcassets */,
+				822191E91D1C2AA500309328 /* LaunchScreen.storyboard */,
+				822191EC1D1C2AA500309328 /* Info.plist */,
+			);
+			path = SportsTimer;
+			sourceTree = "<group>";
+		};
+		822191F31D1C2AA600309328 /* SportsTimer WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				822191F41D1C2AA600309328 /* Interface.storyboard */,
+				822191F71D1C2AA600309328 /* Assets.xcassets */,
+				822191F91D1C2AA600309328 /* Info.plist */,
+			);
+			path = "SportsTimer WatchKit App";
+			sourceTree = "<group>";
+		};
+		822192021D1C2AA600309328 /* SportsTimer WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				822B6E091D57A86A002566AA /* WatchSession.swift */,
+				8235D42E1D5933BC00E6CC88 /* HomeInterfaceController.swift */,
+				822192051D1C2AA600309328 /* ScoreboardInterfaceController.swift */,
+				822192071D1C2AA600309328 /* ExtensionDelegate.swift */,
+				822192091D1C2AA600309328 /* NotificationController.swift */,
+				8221920B1D1C2AA600309328 /* GlanceController.swift */,
+				8221920D1D1C2AA600309328 /* Assets.xcassets */,
+				8221920F1D1C2AA600309328 /* Info.plist */,
+				822192031D1C2AA600309328 /* Supporting Files */,
+			);
+			path = "SportsTimer WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		822192031D1C2AA600309328 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				822192041D1C2AA600309328 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8235D4301D5A146400E6CC88 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8235D4311D5A14A300E6CC88 /* SF-UI-Display-Black.otf */,
+				8235D4321D5A14A300E6CC88 /* SF-UI-Display-Bold.otf */,
+				8235D4331D5A14A300E6CC88 /* SF-UI-Display-Heavy.otf */,
+				8235D4341D5A14A300E6CC88 /* SF-UI-Display-Light.otf */,
+				8235D4351D5A14A300E6CC88 /* SF-UI-Display-Medium.otf */,
+				8235D4361D5A14A300E6CC88 /* SF-UI-Display-Regular.otf */,
+				8235D4371D5A14A300E6CC88 /* SF-UI-Display-Semibold.otf */,
+				8235D4381D5A14A300E6CC88 /* SF-UI-Display-Thin.otf */,
+				8235D4391D5A14A300E6CC88 /* SF-UI-Display-Ultralight.otf */,
+				8235D43A1D5A14A300E6CC88 /* SF-UI-Text-Bold.otf */,
+				8235D43B1D5A14A300E6CC88 /* SF-UI-Text-BoldItalic.otf */,
+				8235D43C1D5A14A300E6CC88 /* SF-UI-Text-Heavy.otf */,
+				8235D43D1D5A14A300E6CC88 /* SF-UI-Text-HeavyItalic.otf */,
+				8235D43E1D5A14A300E6CC88 /* SF-UI-Text-Light.otf */,
+				8235D43F1D5A14A300E6CC88 /* SF-UI-Text-LightItalic.otf */,
+				8235D4401D5A14A300E6CC88 /* SF-UI-Text-Medium.otf */,
+				8235D4411D5A14A300E6CC88 /* SF-UI-Text-MediumItalic.otf */,
+				8235D4421D5A14A300E6CC88 /* SF-UI-Text-Regular.otf */,
+				8235D4431D5A14A300E6CC88 /* SF-UI-Text-RegularItalic.otf */,
+				8235D4441D5A14A300E6CC88 /* SF-UI-Text-Semibold.otf */,
+				8235D4451D5A14A300E6CC88 /* SF-UI-Text-SemiboldItalic.otf */,
+				8235D4461D5A14A300E6CC88 /* System San Francisco Display Bold.ttf */,
+				8235D4471D5A14A300E6CC88 /* System San Francisco Display Regular.ttf */,
+				8235D4481D5A14A300E6CC88 /* System San Francisco Display Thin.ttf */,
+				8235D4491D5A14A300E6CC88 /* System San Francisco Display Ultralight.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		822191DC1D1C2AA500309328 /* SportsTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8221921A1D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer" */;
+			buildPhases = (
+				822191D91D1C2AA500309328 /* Sources */,
+				822191DA1D1C2AA500309328 /* Frameworks */,
+				822191DB1D1C2AA500309328 /* Resources */,
+				822192191D1C2AA600309328 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				822191F21D1C2AA600309328 /* PBXTargetDependency */,
+			);
+			name = SportsTimer;
+			productName = SportsTimer;
+			productReference = 822191DD1D1C2AA500309328 /* SportsTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		822191EE1D1C2AA600309328 /* SportsTimer WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 822192161D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer WatchKit App" */;
+			buildPhases = (
+				822191ED1D1C2AA600309328 /* Resources */,
+				822192151D1C2AA600309328 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				822192011D1C2AA600309328 /* PBXTargetDependency */,
+			);
+			name = "SportsTimer WatchKit App";
+			productName = "SportsTimer WatchKit App";
+			productReference = 822191EF1D1C2AA600309328 /* SportsTimer WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		822191FD1D1C2AA600309328 /* SportsTimer WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 822192121D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer WatchKit Extension" */;
+			buildPhases = (
+				822191FA1D1C2AA600309328 /* Sources */,
+				822191FB1D1C2AA600309328 /* Frameworks */,
+				822191FC1D1C2AA600309328 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SportsTimer WatchKit Extension";
+			productName = "SportsTimer WatchKit Extension";
+			productReference = 822191FE1D1C2AA600309328 /* SportsTimer WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		822191D51D1C2AA500309328 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Caleb Rudnicki";
+				TargetAttributes = {
+					822191DC1D1C2AA500309328 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 92DETN2MKQ;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					822191EE1D1C2AA600309328 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 92DETN2MKQ;
+					};
+					822191FD1D1C2AA600309328 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 92DETN2MKQ;
+					};
+				};
+			};
+			buildConfigurationList = 822191D81D1C2AA500309328 /* Build configuration list for PBXProject "SportsTimer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 822191D41D1C2AA500309328;
+			productRefGroup = 822191DE1D1C2AA500309328 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				822191DC1D1C2AA500309328 /* SportsTimer */,
+				822191EE1D1C2AA600309328 /* SportsTimer WatchKit App */,
+				822191FD1D1C2AA600309328 /* SportsTimer WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		822191DB1D1C2AA500309328 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8284C9831D2EE70600A08EEF /* Main.storyboard in Resources */,
+				822191EB1D1C2AA500309328 /* LaunchScreen.storyboard in Resources */,
+				822191E81D1C2AA500309328 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		822191ED1D1C2AA600309328 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822191F81D1C2AA600309328 /* Assets.xcassets in Resources */,
+				822191F61D1C2AA600309328 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		822191FC1D1C2AA600309328 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8235D44A1D5A168800E6CC88 /* SF-UI-Display-Black.otf in Resources */,
+				8235D44B1D5A168800E6CC88 /* SF-UI-Display-Bold.otf in Resources */,
+				8235D44C1D5A168800E6CC88 /* SF-UI-Display-Heavy.otf in Resources */,
+				8235D44D1D5A168800E6CC88 /* SF-UI-Display-Light.otf in Resources */,
+				8235D44E1D5A168800E6CC88 /* SF-UI-Display-Medium.otf in Resources */,
+				8235D44F1D5A168800E6CC88 /* SF-UI-Display-Regular.otf in Resources */,
+				8235D4501D5A168800E6CC88 /* SF-UI-Display-Semibold.otf in Resources */,
+				8235D4511D5A168800E6CC88 /* SF-UI-Display-Thin.otf in Resources */,
+				8235D4521D5A168800E6CC88 /* SF-UI-Display-Ultralight.otf in Resources */,
+				8235D4531D5A168800E6CC88 /* SF-UI-Text-Bold.otf in Resources */,
+				8235D4541D5A168800E6CC88 /* SF-UI-Text-BoldItalic.otf in Resources */,
+				8235D4551D5A168800E6CC88 /* SF-UI-Text-Heavy.otf in Resources */,
+				8235D4561D5A168800E6CC88 /* SF-UI-Text-HeavyItalic.otf in Resources */,
+				8235D4571D5A168800E6CC88 /* SF-UI-Text-Light.otf in Resources */,
+				8235D4581D5A168800E6CC88 /* SF-UI-Text-LightItalic.otf in Resources */,
+				8235D4591D5A168800E6CC88 /* SF-UI-Text-Medium.otf in Resources */,
+				8235D45A1D5A168800E6CC88 /* SF-UI-Text-MediumItalic.otf in Resources */,
+				8235D45B1D5A168800E6CC88 /* SF-UI-Text-Regular.otf in Resources */,
+				8235D45C1D5A168800E6CC88 /* SF-UI-Text-RegularItalic.otf in Resources */,
+				8235D45D1D5A168800E6CC88 /* SF-UI-Text-Semibold.otf in Resources */,
+				8235D45E1D5A168800E6CC88 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
+				8235D45F1D5A168800E6CC88 /* System San Francisco Display Bold.ttf in Resources */,
+				8235D4601D5A168800E6CC88 /* System San Francisco Display Regular.ttf in Resources */,
+				8235D4611D5A168800E6CC88 /* System San Francisco Display Thin.ttf in Resources */,
+				8235D4621D5A168800E6CC88 /* System San Francisco Display Ultralight.ttf in Resources */,
+				8221920E1D1C2AA600309328 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		822191D91D1C2AA500309328 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822191E11D1C2AA500309328 /* AppDelegate.swift in Sources */,
+				824435331D2D6FA200383452 /* ScoreboardViewController.swift in Sources */,
+				822B6E0C1D57AA0A002566AA /* PhoneSession.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		822191FA1D1C2AA600309328 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8221920A1D1C2AA600309328 /* NotificationController.swift in Sources */,
+				822B6E0A1D57A86A002566AA /* WatchSession.swift in Sources */,
+				822192081D1C2AA600309328 /* ExtensionDelegate.swift in Sources */,
+				822192061D1C2AA600309328 /* ScoreboardInterfaceController.swift in Sources */,
+				8235D42F1D5933BC00E6CC88 /* HomeInterfaceController.swift in Sources */,
+				8221920C1D1C2AA600309328 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		822191F21D1C2AA600309328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 822191EE1D1C2AA600309328 /* SportsTimer WatchKit App */;
+			targetProxy = 822191F11D1C2AA600309328 /* PBXContainerItemProxy */;
+		};
+		822192011D1C2AA600309328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 822191FD1D1C2AA600309328 /* SportsTimer WatchKit Extension */;
+			targetProxy = 822192001D1C2AA600309328 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		822191E91D1C2AA500309328 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				822191EA1D1C2AA500309328 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		822191F41D1C2AA600309328 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				822191F51D1C2AA600309328 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		822192101D1C2AA600309328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		822192111D1C2AA600309328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		822192131D1C2AA600309328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "SportsTimer WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		822192141D1C2AA600309328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				INFOPLIST_FILE = "SportsTimer WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		822192171D1C2AA600309328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = SportsTimer_WatchKit_Extension;
+				INFOPLIST_FILE = "SportsTimer WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		822192181D1C2AA600309328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = SportsTimer_WatchKit_Extension;
+				INFOPLIST_FILE = "SportsTimer WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		8221921B1D1C2AA600309328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsTimer/SportsTimer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SportsTimer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		8221921C1D1C2AA600309328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SportsTimer/SportsTimer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SportsTimer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrudnicki.SportsTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		822191D81D1C2AA500309328 /* Build configuration list for PBXProject "SportsTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				822192101D1C2AA600309328 /* Debug */,
+				822192111D1C2AA600309328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		822192121D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				822192131D1C2AA600309328 /* Debug */,
+				822192141D1C2AA600309328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		822192161D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				822192171D1C2AA600309328 /* Debug */,
+				822192181D1C2AA600309328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8221921A1D1C2AA600309328 /* Build configuration list for PBXNativeTarget "SportsTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8221921B1D1C2AA600309328 /* Debug */,
+				8221921C1D1C2AA600309328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 822191D51D1C2AA500309328 /* Project object */;
+}
